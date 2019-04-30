@@ -1,11 +1,12 @@
 package controller;
 
+import component.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import utils.DirectoryTreeUtils;
-import utils.TextFieldUtils;
+import javafx.scene.layout.FlowPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,26 +18,48 @@ public class MainUIController implements Initializable {
     @FXML
     private TextField pathField;
     @FXML
+    private FlowPane flowPane;
+    @FXML
     private Button goBtn;
     @FXML
-    private Button backwardBtn;
+    private Button backwardsBtn;
     @FXML
-    private Button forwardBtn;
+    private Button forwardsBtn;
     @FXML
-    private Button upperBtn;
-    private DirectoryTreeUtils d;
-    private TextFieldUtils t;
-
+    private Button upperBtn ;
+    private DirectoryTreeUtils dUtils;
+    private TextFieldUtils tUtils;
+    private StaticUtils sUtils;
+    private FlowPaneUtils fUtils;
+    private ButtonUtils bUtils;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        d = new DirectoryTreeUtils(pathField,directoryTree);
-        t = new TextFieldUtils(pathField,directoryTree);
-        goBtn = new Button("Go");
-        directoryTree = d.getTreeView();
-        pathField = t.getPathField();
+        dUtils = new DirectoryTreeUtils(pathField,directoryTree);
+        tUtils = new TextFieldUtils(pathField,directoryTree);
+        fUtils = new FlowPaneUtils(flowPane);
+        bUtils = new ButtonUtils(backwardsBtn,forwardsBtn);
+        sUtils = new StaticUtils(fUtils,bUtils);
     }
 
     public void goButtonOnClicked(MouseEvent mouseEvent) {
-        t.update();
+        tUtils.update();
+    }
+
+    public void upperBtnOnClicked(MouseEvent event) {
+        tUtils.getUpperPath();
+    }
+
+    public void backwardsBtnOnClicked(MouseEvent event) {
+        if (sUtils.presentIndex!=0) {
+            pathField.setText(sUtils.browsedPath.get(--sUtils.presentIndex));
+            tUtils.update();
+        }
+    }
+
+    public void forwardsBtnOnclicked(MouseEvent event) {
+        if (sUtils.presentIndex != sUtils.maxIndexCount) {
+            pathField.setText(sUtils.browsedPath.get(++sUtils.presentIndex));
+            tUtils.update();
+        }
     }
 }

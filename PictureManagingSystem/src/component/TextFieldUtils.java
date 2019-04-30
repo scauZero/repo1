@@ -1,4 +1,4 @@
-package widget;
+package component;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;

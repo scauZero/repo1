@@ -1,4 +1,8 @@
-package utils;
+package node;
 
-public class PictureNode {
+public class PictureNode extends FlowPaneNode {
+    public PictureNode(String nodePath) {
+        super(nodePath);
+        init(nodePath);
+    }
 }

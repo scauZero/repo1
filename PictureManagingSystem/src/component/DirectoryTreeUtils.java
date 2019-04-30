@@ -1,17 +1,18 @@
-package widget;
+package component;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.FlowPane;
+
 import java.io.File;
 import java.util.Stack;
 /*
 * author : Rorke
-* latest update : 2019.04.17
+* latest update : 2019.04.24
 * usage : build directory tree
-* TODO : update text field
 * TODO : update picture area
 * */
 public class DirectoryTreeUtils implements InitializeUtils {
@@ -20,7 +21,7 @@ public class DirectoryTreeUtils implements InitializeUtils {
     private TreeItem<String> selectedItem;
     private TextField pathField;
 
-    public DirectoryTreeUtils(TextField pathField,TreeView<String> treeView) {
+    public DirectoryTreeUtils(TextField pathField, TreeView<String> treeView) {
         this.treeView = treeView;
         this.pathField = pathField;
         initialize();

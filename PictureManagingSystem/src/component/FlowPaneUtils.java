@@ -1,8 +1,19 @@
 package component;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
 import node.DirectoryNode;
+import node.PictureNode;
+
 import java.io.File;
+
+import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 
 public class FlowPaneUtils implements InitializeUtils{
     private FlowPane flowPane;
@@ -19,6 +30,13 @@ public class FlowPaneUtils implements InitializeUtils{
     }
     @Override
     public void initialize() {
+        flowPane.setBackground(new Background(new BackgroundFill(Color.WHITE,null,null)));
+        flowPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+            }
+        });
         update();
     }
 
@@ -26,11 +44,17 @@ public class FlowPaneUtils implements InitializeUtils{
     public void update() {
         clearAllNodes();
         File[] files = new File(StaticUtils.presentPath).listFiles();
+        if (files!=null)
         for(File f:files){
             if (f.isDirectory()&&!f.isHidden()){
               DirectoryNode dNode = new DirectoryNode(f.getPath());
               flowPane.getChildren().add(dNode);
             }
+//            if(StaticUtils.isPicture(f)){
+//                PictureNode pNode = new PictureNode(f.getPath());
+//                flowPane.getChildren().add(pNode);
+//            }
         }
     }
+
 }

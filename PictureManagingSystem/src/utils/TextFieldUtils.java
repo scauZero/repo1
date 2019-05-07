@@ -1,15 +1,11 @@
-package component;
+package utils;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.io.File;
-import java.util.Stack;
 
 public class TextFieldUtils implements InitializeUtils {
     private TextField pathField;

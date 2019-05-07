@@ -1,10 +1,12 @@
 package node;
 
-import component.StaticUtils;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
+import utils.StaticUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -21,7 +23,8 @@ public abstract class FlowPaneNode extends VBox {
     protected ImageView nodeView;
     protected Label nodeName;
     protected int index;
-    protected int clickCount = 0;
+    protected int leftClickCount = 0;
+    protected OperationMenu menu = new OperationMenu(this);
 
     public FlowPaneNode(String nodePath, int index) {
         this.nodePath = nodePath;
@@ -49,19 +52,19 @@ public abstract class FlowPaneNode extends VBox {
     protected void setSingleClickedEvent() {
         this.setOnMouseClicked((MouseEvent event) -> {
             if (event.getButton().equals(MouseButton.PRIMARY)) {
-                clickCount++;
-                if(clickCount == 1) {
+                leftClickCount++;
+                if(leftClickCount == 1) {
                     StaticUtils.flowPaneSelectedEvent(index);
                     Timer timer = new Timer();
                     NodeTimer task = new NodeTimer(this);
                     timer.schedule(task, 1000);
                 }
-                else if(clickCount ==2){
+                else if(leftClickCount ==2){
                     doubleClickedEvent();
                 }
             } else if (event.getButton().equals(MouseButton.SECONDARY)) {
                 StaticUtils.flowPaneSelectedEvent(index);
-                //TODO:右键菜单
+                menu.show(this,event.getScreenX(),event.getScreenY());
             }
         });
     }
@@ -92,10 +95,14 @@ public abstract class FlowPaneNode extends VBox {
     }
 
     public int getClickCount() {
-        return clickCount;
+        return leftClickCount;
     }
 
     public void setClickCount(int clickCount) {
-        this.clickCount = clickCount;
+        this.leftClickCount = clickCount;
+    }
+
+    public Label getNodeName() {
+        return nodeName;
     }
 }

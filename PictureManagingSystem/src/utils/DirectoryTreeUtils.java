@@ -1,11 +1,9 @@
-package component;
+package utils;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.FlowPane;
 
 import java.io.File;
 import java.util.Stack;

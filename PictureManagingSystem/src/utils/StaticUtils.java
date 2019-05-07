@@ -1,12 +1,12 @@
-package component;
+package utils;
 
-import node.DirectoryNode;
+import action.RenameAction;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.util.ArrayList;
 
-public class StaticUtils{
+public class StaticUtils implements InitializeUtils{
     public static File[] root = File.listRoots();
     public static String desktopPath = new String(FileSystemView.getFileSystemView().getHomeDirectory().getPath());
     public static String presentPath = desktopPath;
@@ -23,7 +23,7 @@ public class StaticUtils{
         presentPath = browsedPath.get(presentIndex);
         fUtils.update();
         bUtils.update();
-        tUtils.setPathField(path);
+        tUtils.setPathField(presentPath);
     }
 
     private static void updateList(String path){
@@ -44,15 +44,29 @@ public class StaticUtils{
     }
 
     public StaticUtils(ButtonUtils bUtils, DirectoryTreeUtils dUtils, FlowPaneUtils fUtils,TextFieldUtils tUtils){
-        browsedPath.add(desktopPath);
         this.dUtils = dUtils;
         this.tUtils = tUtils;
         this.fUtils = fUtils;
         this.bUtils = bUtils;
-        jumpEvent(desktopPath);
+        initialize();
     }
 
     public static void flowPaneSelectedEvent(int index){
         fUtils.singleSelectedEvent(index);
+    }
+
+    public static void setRenamingIndex(RenameAction renameAction) {
+        fUtils.setRenaming(true,renameAction);
+    }
+
+    @Override
+    public void initialize() {
+        browsedPath.add(desktopPath);
+        jumpEvent(desktopPath);
+    }
+
+    @Override
+    public void update() {
+
     }
 }

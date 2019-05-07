@@ -3,10 +3,14 @@ package node;
 import component.StaticUtils;
 
 public class DirectoryNode extends FlowPaneNode {
-    public DirectoryNode(String nodePath) {
-        super(nodePath);
+    public DirectoryNode(String nodePath,int index) {
+        super(nodePath,index);
         init(StaticUtils.directoryImage);
+    }
 
+    @Override
+    protected void doubleClickedEvent() {
+        StaticUtils.jumpEvent(nodePath);
     }
 
 }

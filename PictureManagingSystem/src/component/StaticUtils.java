@@ -1,6 +1,6 @@
 package component;
 
-import javafx.scene.layout.FlowPane;
+import node.DirectoryNode;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
@@ -10,13 +10,23 @@ public class StaticUtils{
     public static File[] root = File.listRoots();
     public static String desktopPath = new String(FileSystemView.getFileSystemView().getHomeDirectory().getPath());
     public static String presentPath = desktopPath;
-    public static String directoryImage = "src/image/Directory.jpg";
+    public static String directoryImage = "src/image/Directory.png";
     public static int maxIndexCount = 0;
     public static int presentIndex = 0;
     public static ArrayList<String> browsedPath = new ArrayList<>();
     private static FlowPaneUtils fUtils;
     private static ButtonUtils bUtils;
+    private static DirectoryTreeUtils dUtils;
+    private static TextFieldUtils tUtils;
     public static void jumpEvent(String path){
+        updateList(path);
+        presentPath = browsedPath.get(presentIndex);
+        fUtils.update();
+        bUtils.update();
+        tUtils.setPathField(path);
+    }
+
+    private static void updateList(String path){
         //与当前位置相同不加入
         if(!path.equals(browsedPath.get(presentIndex))){
             presentIndex ++;
@@ -31,15 +41,18 @@ public class StaticUtils{
                 maxIndexCount = presentIndex;
             }
         }
-        presentPath = browsedPath.get(presentIndex);
-        fUtils.update();
-        bUtils.update();
     }
 
-    public StaticUtils(FlowPaneUtils fUtils, ButtonUtils bUtils){
+    public StaticUtils(ButtonUtils bUtils, DirectoryTreeUtils dUtils, FlowPaneUtils fUtils,TextFieldUtils tUtils){
         browsedPath.add(desktopPath);
+        this.dUtils = dUtils;
+        this.tUtils = tUtils;
         this.fUtils = fUtils;
         this.bUtils = bUtils;
         jumpEvent(desktopPath);
+    }
+
+    public static void flowPaneSelectedEvent(int index){
+        fUtils.singleSelectedEvent(index);
     }
 }

@@ -13,17 +13,14 @@ import java.util.Stack;
 * author : Rorke
 * latest update : 2019.04.24
 * usage : build directory tree
-* TODO : update picture area
 * */
 public class DirectoryTreeUtils implements InitializeUtils {
     private TreeView<String> treeView;
     private TreeItem<String> rootItem = new TreeItem<>("My Computer");
     private TreeItem<String> selectedItem;
-    private TextField pathField;
 
-    public DirectoryTreeUtils(TextField pathField, TreeView<String> treeView) {
+    public DirectoryTreeUtils(TreeView<String> treeView) {
         this.treeView = treeView;
-        this.pathField = pathField;
         initialize();
     }
 
@@ -155,7 +152,6 @@ public class DirectoryTreeUtils implements InitializeUtils {
 
     @Override
     public void update() {
-        pathField.setText(getPath(selectedItem));
         StaticUtils.jumpEvent(getPath(selectedItem));
     }
 }

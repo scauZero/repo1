@@ -34,11 +34,11 @@ public class MainUIController implements Initializable {
     private ButtonUtils bUtils;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dUtils = new DirectoryTreeUtils(pathField,directoryTree);
-        tUtils = new TextFieldUtils(pathField,directoryTree);
+        dUtils = new DirectoryTreeUtils(directoryTree);
+        tUtils = new TextFieldUtils(pathField);
         fUtils = new FlowPaneUtils(flowPane);
         bUtils = new ButtonUtils(backwardsBtn,forwardsBtn);
-        sUtils = new StaticUtils(fUtils,bUtils);
+        sUtils = new StaticUtils(bUtils,dUtils,fUtils,tUtils);
     }
 
     public void goButtonOnClicked(MouseEvent mouseEvent) {

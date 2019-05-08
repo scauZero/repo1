@@ -1,5 +1,8 @@
-package action;
+package operationmenu.action;
 
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import node.FlowPaneNode;
@@ -10,8 +13,9 @@ import java.io.File;
 
 public class RenameAction extends MenuItemAction {
     private TextField inputField;
-
+    private FlowPaneNode node;
     public RenameAction(FlowPaneNode node) {
+        this.node = node;
         action(node);
         StaticUtils.setRenamingIndex(this);
     }
@@ -32,8 +36,9 @@ public class RenameAction extends MenuItemAction {
         tmp.setText(oldName);
         tmp.setPrefSize(100,10);
         //TODO:将输入框设为焦点，并选中文字
-        //emm
+        //emmmmmmmmmmmmmmmmmmmmm
         tmp.requestFocus();
+        tmp.setAlignment(Pos.CENTER);
         tmp.setOnKeyPressed((event)->{
             if(event.getCode().equals(KeyCode.ENTER)){
                 Rename(tmp.getText());
@@ -47,7 +52,14 @@ public class RenameAction extends MenuItemAction {
             //TODO:errorAlert : same name
         }else {
             presentFile.renameTo(newFile);
-            StaticUtils.jumpEvent(presentFile.getParent());
+            node.getChildren().remove(1);
+            Label name = new Label(newFile.getName());
+            name.setAlignment(Pos.CENTER);
+            name.setMaxSize(110, 15);
+            name.setWrapText(false);
+            node.getChildren().add(name);
+            node.setNodePath(newFile.getPath());
+            node.setNodeName(name);
         }
     }
     public String getInputField(){

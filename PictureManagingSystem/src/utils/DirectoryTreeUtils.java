@@ -114,7 +114,10 @@ public class DirectoryTreeUtils implements InitializeUtils {
             return true;
     }
 
-    //获取对应目录树单元的路径
+    /*
+     *获取对应目录树单元的路径
+     *
+     */
     private String getPath(TreeItem<String> item){
         StringBuffer pathBuf = new StringBuffer();
         TreeItem<String> tmp = item;

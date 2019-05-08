@@ -1,8 +1,6 @@
 package node;
 
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import operationmenu.NodeMenu;
 import utils.StaticUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,7 +22,7 @@ public abstract class FlowPaneNode extends VBox {
     protected Label nodeName;
     protected int index;
     protected int leftClickCount = 0;
-    protected OperationMenu menu = new OperationMenu(this);
+
 
     public FlowPaneNode(String nodePath, int index) {
         this.nodePath = nodePath;
@@ -54,7 +52,7 @@ public abstract class FlowPaneNode extends VBox {
             if (event.getButton().equals(MouseButton.PRIMARY)) {
                 leftClickCount++;
                 if(leftClickCount == 1) {
-                    StaticUtils.flowPaneSelectedEvent(index);
+                    StaticUtils.flowPaneSelectedEvent(index,event);
                     Timer timer = new Timer();
                     NodeTimer task = new NodeTimer(this);
                     timer.schedule(task, 1000);
@@ -63,7 +61,8 @@ public abstract class FlowPaneNode extends VBox {
                     doubleClickedEvent();
                 }
             } else if (event.getButton().equals(MouseButton.SECONDARY)) {
-                StaticUtils.flowPaneSelectedEvent(index);
+                StaticUtils.flowPaneSelectedEvent(index,event);
+                NodeMenu menu = new NodeMenu(this);
                 menu.show(this,event.getScreenX(),event.getScreenY());
             }
         });
@@ -104,5 +103,10 @@ public abstract class FlowPaneNode extends VBox {
 
     public Label getNodeName() {
         return nodeName;
+    }
+
+    public void setNodeName(Label nodeName) {
+        this.nodeName = nodeName;
+        nodeName.setAlignment(Pos.CENTER);
     }
 }

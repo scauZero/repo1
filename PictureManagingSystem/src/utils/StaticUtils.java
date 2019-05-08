@@ -16,7 +16,7 @@ public class StaticUtils implements InitializeUtils{
     public static int maxIndexCount = 0;
     public static int presentIndex = 0;
     public static ArrayList<String> browsedPath = new ArrayList<>();
-    private static FlowPaneUtils fUtils;
+    private static PaneUtils fUtils;
     private static ButtonUtils bUtils;
     private static DirectoryTreeUtils dUtils;
     private static TextFieldUtils tUtils;
@@ -45,7 +45,7 @@ public class StaticUtils implements InitializeUtils{
         }
     }
 
-    public StaticUtils(ButtonUtils bUtils, DirectoryTreeUtils dUtils, FlowPaneUtils fUtils,TextFieldUtils tUtils){
+    public StaticUtils(ButtonUtils bUtils, DirectoryTreeUtils dUtils, PaneUtils fUtils, TextFieldUtils tUtils){
         this.dUtils = dUtils;
         this.tUtils = tUtils;
         this.fUtils = fUtils;

@@ -10,8 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-
-
 import java.io.File;
 import java.util.Timer;
 
@@ -22,8 +20,7 @@ public abstract class FlowPaneNode extends VBox {
     protected Label nodeName;
     protected int index;
     protected int leftClickCount = 0;
-
-
+    protected NodeMenu menu = new NodeMenu(this);
     public FlowPaneNode(String nodePath, int index) {
         this.nodePath = nodePath;
         this.index = index;
@@ -48,7 +45,7 @@ public abstract class FlowPaneNode extends VBox {
         setSingleClickedEvent();
     }
     protected void setSingleClickedEvent() {
-        this.setOnMouseClicked((MouseEvent event) -> {
+        this.setOnMouseClicked((event) -> {
             if (event.getButton().equals(MouseButton.PRIMARY)) {
                 leftClickCount++;
                 if(leftClickCount == 1) {
@@ -62,8 +59,7 @@ public abstract class FlowPaneNode extends VBox {
                 }
             } else if (event.getButton().equals(MouseButton.SECONDARY)) {
                 StaticUtils.flowPaneSelectedEvent(index,event);
-                NodeMenu menu = new NodeMenu(this);
-                menu.show(this,event.getScreenX(),event.getScreenY());
+                menu.show(this, event.getScreenX(), event.getScreenY());
             }
         });
     }
@@ -75,26 +71,6 @@ public abstract class FlowPaneNode extends VBox {
 
     public void setNodePath(String nodePath) {
         this.nodePath = nodePath;
-    }
-
-    public Image getNodeImage() {
-        return nodeImage;
-    }
-
-    public void setNodeImage(Image nodeImage) {
-        this.nodeImage = nodeImage;
-    }
-
-    public ImageView getNodeView() {
-        return nodeView;
-    }
-
-    public void setNodeView(Image nodeImage) {
-        this.nodeView = new ImageView(nodeImage);
-    }
-
-    public int getClickCount() {
-        return leftClickCount;
     }
 
     public void setClickCount(int clickCount) {

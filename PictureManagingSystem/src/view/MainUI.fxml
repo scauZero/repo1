@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -41,7 +43,16 @@
    <right>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" maxWidth="1920.0" prefHeight="890.0" prefWidth="1064.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
-            <FlowPane fx:id="flowPane" prefHeight="890.0" prefWidth="1051.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
+               <children>
+                  <Canvas fx:id="canvas" height="874.0" width="1051.0">
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Canvas>
+                  <FlowPane fx:id="flowPane" prefHeight="871.0" prefWidth="1050.0" />
+               </children>
+            </AnchorPane>
          </content>
       </ScrollPane>
    </right>

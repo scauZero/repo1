@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.scene.canvas.Canvas;
 import utils.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,16 +27,18 @@ public class MainUIController implements Initializable {
     private Button forwardsBtn;
     @FXML
     private Button upperBtn ;
+    @FXML
+    private Canvas canvas;
     private DirectoryTreeUtils dUtils;
     private TextFieldUtils tUtils;
     private StaticUtils sUtils;
-    private FlowPaneUtils fUtils;
+    private PaneUtils fUtils;
     private ButtonUtils bUtils;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dUtils = new DirectoryTreeUtils(directoryTree);
         tUtils = new TextFieldUtils(pathField);
-        fUtils = new FlowPaneUtils(flowPane);
+        fUtils = new PaneUtils(flowPane,canvas);
         bUtils = new ButtonUtils(backwardsBtn,forwardsBtn);
         sUtils = new StaticUtils(bUtils,dUtils,fUtils,tUtils);
     }

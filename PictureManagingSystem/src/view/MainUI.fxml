@@ -45,7 +45,7 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;">
                <children>
-                  <Canvas fx:id="canvas" height="874.0" width="1051.0">
+                  <Canvas fx:id="canvas" height="9999.0" width="1051.0">
                      <effect>
                         <Blend />
                      </effect>

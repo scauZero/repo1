@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import java.io.File;
 import java.util.Timer;
@@ -20,7 +19,14 @@ public abstract class FlowPaneNode extends VBox {
     protected Label nodeName;
     protected int index;
     protected int leftClickCount = 0;
+    protected boolean isMultipleSelected = false;
+
+    public void setMultipleSelected(boolean multipleSelected) {
+        isMultipleSelected = multipleSelected;
+    }
+
     protected NodeMenu menu = new NodeMenu(this);
+
     public FlowPaneNode(String nodePath, int index) {
         this.nodePath = nodePath;
         this.index = index;
@@ -42,9 +48,10 @@ public abstract class FlowPaneNode extends VBox {
     }
 
     protected void setVboxEvent() {
-        setSingleClickedEvent();
+        setSingleChoiceEvent();
     }
-    protected void setSingleClickedEvent() {
+
+    protected void setSingleChoiceEvent() {
         this.setOnMouseClicked((event) -> {
             if (event.getButton().equals(MouseButton.PRIMARY)) {
                 leftClickCount++;
@@ -59,10 +66,12 @@ public abstract class FlowPaneNode extends VBox {
                 }
             } else if (event.getButton().equals(MouseButton.SECONDARY)) {
                 StaticUtils.flowPaneSelectedEvent(index,event);
-                menu.show(this, event.getScreenX(), event.getScreenY());
+                if(!isMultipleSelected)
+                    menu.show(this, event.getScreenX(), event.getScreenY());
             }
         });
     }
+
     protected abstract void doubleClickedEvent();
     /*getter and setter*/
     public String getNodePath() {

@@ -28,6 +28,9 @@ public class NodeMenu extends ContextMenu {
         if (node.getClass().getName().equals("node.PictureNode")){
             paste.setDisable(true);
         }
+        if (node.getClass().getName().equals("node.DirectoryNode")){
+            copy.setDisable(true);
+        }
     }
 
     private void setItemEvent(){
@@ -38,6 +41,7 @@ public class NodeMenu extends ContextMenu {
             new RenameAction(node);
         });
         copy.setOnAction(event -> {
+
             new CopyAction(node);
         });
         paste.setOnAction(event -> {

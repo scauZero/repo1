@@ -1,7 +1,7 @@
 package controller;
 
 import javafx.scene.canvas.Canvas;
-import utils.*;
+import component.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;

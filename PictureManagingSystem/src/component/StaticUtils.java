@@ -1,4 +1,4 @@
-package utils;
+package component;
 
 import javafx.scene.input.MouseEvent;
 import operationmenu.action.RenameAction;
@@ -69,6 +69,10 @@ public class StaticUtils implements InitializeUtils{
             }
         }
         return false;
+    }
+
+    public static void deleteEvent(int index){
+        fUtils.deleteEvent(index);
     }
 
     @Override

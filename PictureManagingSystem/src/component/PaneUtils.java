@@ -1,4 +1,4 @@
-package utils;
+package component;
 
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
@@ -27,7 +27,7 @@ public class PaneUtils implements InitializeUtils{
     private HashSet<Integer> selectedSet = new HashSet<>();
     private Canvas canvas;
     private GraphicsContext gc;
-    private PaneMenu menu = new PaneMenu(flowPane);
+    private PaneMenu menu = new PaneMenu(this);
 
     public PaneUtils(FlowPane flowPane, Canvas canvas) {
         this.flowPane = flowPane;
@@ -59,7 +59,7 @@ public class PaneUtils implements InitializeUtils{
         int x = (int) (event.getX()/115);
         int y = (int) (event.getY()/130);
         int index = y*9+x;
-        if(index>flowPane.getChildren().size()){
+        if(index>flowPane.getChildren().size()){//判断点击位置是否在其他地方
             clearAllSelected();
         }
     }
@@ -76,17 +76,7 @@ public class PaneUtils implements InitializeUtils{
 
     private void setMouseEvent(){
         flowPane.setOnMouseClicked((event)->{
-            if (event.getButton().equals(MouseButton.PRIMARY)) {
-                if (isRenaming) {
-                    renameAction.Rename(renameAction.getInputField());
-                    isRenaming = false;
-                }
-                                       //左键如果有东西在改名，点击布局其他位置就完成改名
-                                       //取消选中
-            }else if(isMultipleSelecting){                    //右键取消选中，弹出菜单
-                menu.show(flowPane,event.getScreenX(),event.getScreenY());
-            }
-            cancelSelected(event);
+            clickPaneEvent(event);
         });
         flowPane.setOnMousePressed(event -> {
             setStartingPoint(event);
@@ -100,6 +90,19 @@ public class PaneUtils implements InitializeUtils{
             clearRectangle();
             multipleSelectedEvent();
         });
+    }
+
+    private void clickPaneEvent(MouseEvent event){
+        System.out.println("1");
+        if (isRenaming) {
+            renameAction.Rename(renameAction.getInputField());//如果改名时点击
+            isRenaming = false;                               //让他完成改名
+        }
+        else if(event.getButton().equals(MouseButton.SECONDARY)){
+            System.out.println(flowPane.getHeight()+" "+flowPane.getWidth());
+            menu.show(flowPane,event.getScreenX(),event.getScreenY());
+        }
+        cancelSelected(event);//取消选中
     }
 
     private void multipleSelectedEvent() {
@@ -200,5 +203,9 @@ public class PaneUtils implements InitializeUtils{
         selectedSet.removeAll(selectedSet);
         pictureFileList.removeAll(pictureFileList);
         paneNodeList.removeAll(paneNodeList);
+    }
+
+    public void deleteEvent(int index) {
+        flowPane.getChildren().remove(index);
     }
 }

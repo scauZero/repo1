@@ -2,7 +2,7 @@ package operationmenu.action;
 
 
 import node.FlowPaneNode;
-import utils.StaticUtils;
+import component.StaticUtils;
 
 public class DeleteAction extends MenuItemAction{
     public DeleteAction(FlowPaneNode node) {
@@ -14,6 +14,6 @@ public class DeleteAction extends MenuItemAction{
         setFile(node);
         String parent = presentFile.getParent();
         presentFile.delete();
-        StaticUtils.jumpEvent(parent);//刷新界面
+        StaticUtils.deleteEvent(node.getIndex());//刷新界面
     }
 }

@@ -1,7 +1,7 @@
 package node;
 
 import operationmenu.NodeMenu;
-import utils.StaticUtils;
+import component.StaticUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -18,6 +18,11 @@ public abstract class FlowPaneNode extends VBox {
     protected ImageView nodeView;
     protected Label nodeName;
     protected int index;
+
+    public int getIndex() {
+        return index;
+    }
+
     protected int leftClickCount = 0;
     protected boolean isMultipleSelected = false;
 

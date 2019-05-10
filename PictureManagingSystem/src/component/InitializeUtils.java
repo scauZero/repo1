@@ -1,4 +1,4 @@
-package utils;
+package component;
 
 public interface InitializeUtils {
     public abstract void initialize();

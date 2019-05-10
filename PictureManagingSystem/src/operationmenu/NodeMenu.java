@@ -7,45 +7,16 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import node.FlowPaneNode;
 
-public class NodeMenu extends ContextMenu {
-    private MenuItem delete = new MenuItem("delete");
-    private MenuItem copy = new MenuItem("copy");
-    private MenuItem paste = new MenuItem("paste");
-    private MenuItem rename = new MenuItem("rename");
-    private FlowPaneNode node;
-    public NodeMenu(FlowPaneNode node){
+public class NodeMenu extends MyMenu {
+    private FlowPaneNode paneNode;
+
+    public NodeMenu(FlowPaneNode paneNode) {
         super();
-        this.node = node;
-        setItemEvent();
-        setItemDisable();
-        this.getItems().addAll(delete);
-        this.getItems().addAll(copy);
-        this.getItems().addAll(paste);
-        this.getItems().addAll(rename);
+        this.paneNode = paneNode;
     }
 
-    private void setItemDisable() {
-        if (node.getClass().getName().equals("node.PictureNode")){
-            paste.setDisable(true);
-        }
-        if (node.getClass().getName().equals("node.DirectoryNode")){
-            copy.setDisable(true);
-        }
-    }
+    @Override
+    public void setItemDisable() {
 
-    private void setItemEvent(){
-        delete.setOnAction((event)->{
-            new DeleteAction(node);
-        });
-        rename.setOnAction(event -> {
-            new RenameAction(node);
-        });
-        copy.setOnAction(event -> {
-
-            new CopyAction(node);
-        });
-        paste.setOnAction(event -> {
-            new PasteAction(node);
-        });
     }
 }

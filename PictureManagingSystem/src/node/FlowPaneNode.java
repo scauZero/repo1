@@ -36,7 +36,7 @@ public abstract class FlowPaneNode extends VBox implements Comparable{
         nodeView.setFitWidth(105);
         nodeView.setFitHeight(110);
         nodeName = new Label(new File(nodePath).getName());
-        nodeName.setMaxSize(110, 15);
+        nodeName.setMaxSize(105, 15);
         nodeName.setWrapText(false);
         nodeName.setAlignment(Pos.CENTER);
         this.getChildren().addAll(nodeView, nodeName);

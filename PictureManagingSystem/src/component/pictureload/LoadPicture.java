@@ -10,9 +10,9 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public class FileUtil {
-    public static final int WIDTH_SIZE=100;
-    public static final int HEIGHT_SIZE=100;
+public class LoadPicture {
+    public static  int WIDTH_SIZE=105;
+    public static  int HEIGHT_SIZE=110;
     public static int[] getWidthHeight(File file){
         int[] widthHeight=new int[2];
         try {

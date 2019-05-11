@@ -1,6 +1,6 @@
 package component;
 
-import component.pictureload.DATAList;
+import component.pictureload.Thread;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -8,13 +8,14 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
 import node.FlowPaneNode;
 import node.PictureNode;
-import operationmenu.CopyList;
 import operationmenu.PaneMenu;
 import operationmenu.action.RenameAction;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import node.DirectoryNode;
+import secondstage.ViewerService;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,7 +36,7 @@ public class PaneUtils implements InitializeUtils{
     private Canvas canvas;
     private GraphicsContext gc;
     private PaneMenu menu = new PaneMenu(this);
-    private DATAList loadPictures;
+    private Thread loadPictures;
 
     public PaneUtils(FlowPane flowPane, Canvas canvas, ScrollPane scrollPane) {
         this.flowPane = flowPane;
@@ -182,6 +183,8 @@ public class PaneUtils implements InitializeUtils{
 
     @Override
     public void initialize() {
+//        flowPane.setVgap(2.5);
+//        flowPane.setHgap(2.5);
         gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.rgb(199,253,255));
         setMouseEvent();
@@ -210,7 +213,8 @@ public class PaneUtils implements InitializeUtils{
             paneNodeList.add(pNode);
             pictureBoxList.add(pNode);
         }
-        loadPictures = new DATAList(pictureFileList,pictureBoxList,scrollPane,flowPane);
+        ViewerService.setCurrentFiles(pictureFileList);
+        loadPictures = new Thread(pictureFileList,pictureBoxList,scrollPane,flowPane);
         loadPictures.run();
     }
 

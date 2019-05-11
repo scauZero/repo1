@@ -12,7 +12,7 @@ public class StaticUtils implements InitializeUtils{
     public static String desktopPath = new String(FileSystemView.getFileSystemView().getHomeDirectory().getPath());
     public static String presentPath = desktopPath;
     public static String directoryImage = "src/image/Directory.png";
-    public static String tmpPath = "src/image/tmpLoading.png";
+    public static String tmpPath = "src/image/Loading.png";
     public static String[] endOfPicture = {".jpg",".jpeg",".gif",".bmp",".png"};
     public static int maxIndexCount = 0;
     public static int presentIndex = 0;

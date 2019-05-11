@@ -51,21 +51,11 @@ public class Thread implements Runnable {
 
     @Override
     public void run() {
-        new java.lang.Thread(() -> {
-            while (directoryFlag) {
-                try {
-                    java.lang.Thread.currentThread().sleep(1000);//每0.1秒监测本文件夹路径与目录树点击路径一致
-                    if (dirPath.equals(StaticUtils.presentPath))
-                        ;
-                    else directoryFlag = false;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+
 
         //顺序加载
         new java.lang.Thread(() -> {
+            System.out.println(java.lang.Thread.currentThread().getName());
             while (directoryFlag && index < filesList.size()) {
                 if (sign > 0) {
                     if ((boolean) loadFlagsList.get(index) && (boolean) occupyList.get(index)) {
@@ -103,6 +93,7 @@ public class Thread implements Runnable {
         //滚动条加载
         new java.lang.Thread(() -> {
             while (directoryFlag && index <= filesList.size()) {
+
                 try {
                     java.lang.Thread.currentThread().sleep(3000);//滚动条在同一位置留超过1秒 新建一个线程加载缩略图，刷新。
                 } catch (InterruptedException e) {
@@ -152,6 +143,17 @@ public class Thread implements Runnable {
                 }
             }
         }).start();
-
+        new java.lang.Thread(() -> {
+            while (directoryFlag) {
+                try {
+                    java.lang.Thread.currentThread().sleep(1000);//每0.1秒监测本文件夹路径与目录树点击路径一致
+                    if (dirPath.equals(StaticUtils.presentPath))
+                        ;
+                    else directoryFlag = false;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

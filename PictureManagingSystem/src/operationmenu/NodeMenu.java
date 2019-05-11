@@ -1,6 +1,7 @@
 package operationmenu;
 import component.PaneUtils;
 import component.StaticUtils;
+import javafx.scene.layout.FlowPane;
 import operationmenu.action.*;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
@@ -8,9 +9,10 @@ import node.FlowPaneNode;
 
 public class NodeMenu extends MyMenu {
     private FlowPaneNode paneNode;
-
-    public NodeMenu(FlowPaneNode paneNode) {
+    private PaneUtils pUtils;
+    public NodeMenu(FlowPaneNode paneNode,PaneUtils pUtils) {
         super();
+        this.pUtils = pUtils;
         this.paneNode = paneNode;
     }
 
@@ -31,13 +33,16 @@ public class NodeMenu extends MyMenu {
             new SelectAllAction(paneNode);
         });
         rename.setOnAction(event -> {
-            new RenameAction(paneNode);
+            new RenameAction(paneNode,pUtils);
         });
         delete.setOnAction(event -> {
             new DeleteAction(paneNode);
         });
         paste.setOnAction(event -> {
             new PasteAction(paneNode);
+        });
+        copy.setOnAction(event -> {
+            new CopyAction(paneNode);
         });
     }
 }

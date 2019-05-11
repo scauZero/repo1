@@ -25,20 +25,22 @@ public class PasteAction extends MenuItemAction {
     public void action(PaneUtils pUtils) {
         for (File file: StaticUtils.copyList) {
             try {
-                Files.copy(file.toPath(),new File(StaticUtils.presentPath).toPath());
+                Files.copy(file.toPath(),new File(StaticUtils.presentPath+"\\"+file.getName()).toPath());
             } catch (IOException e) {
                 Alert err = new Alert(Alert.AlertType.ERROR);
                 err.setHeaderText("复制错误");
                 e.printStackTrace();
             }
         }
+        pUtils.update();
+        StaticUtils.copyList.removeAll(StaticUtils.copyList);
     }
 
     @Override
     public void action(FlowPaneNode node) {
         for (File file: StaticUtils.copyList) {
             try {
-                Files.copy(file.toPath(),new File(node.getNodePath()).toPath());
+                Files.copy(file.toPath(),new File(node.getNodePath()+"\\"+file.getName()).toPath());
             } catch (IOException e) {
                 Alert err = new Alert(Alert.AlertType.ERROR);
                 err.setHeaderText("复制错误");

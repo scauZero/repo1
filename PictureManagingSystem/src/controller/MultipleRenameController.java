@@ -5,6 +5,7 @@ import component.StaticUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -37,8 +38,7 @@ public class MultipleRenameController implements Initializable {
         PaneUtils pUtils = MultipleStaticAction.pUtils;
         ArrayList<FlowPaneNode> paneNodeList = MultipleStaticAction.pUtils.getPaneNodeList();
         HashSet<Integer> selectedSet = MultipleStaticAction.pUtils.getSelectedSet();
-        outter:
-
+        out:
         for (int i : selectedSet) {
             Label newName = new Label();
             newName.setAlignment(Pos.CENTER);
@@ -54,8 +54,11 @@ public class MultipleRenameController implements Initializable {
                 paneNodeList.get(i).setNodeName(newName);
                 paneNodeList.get(i).getChildren().set(1, newName);
             }else {
+                Alert errSameName = new Alert(Alert.AlertType.ERROR);
+                errSameName.setHeaderText("File"+newName+"is exists");
+                errSameName.show();
                 count = 0;
-                break outter;
+                break out;
             }
         }
 

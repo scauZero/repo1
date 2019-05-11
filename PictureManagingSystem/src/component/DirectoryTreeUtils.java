@@ -16,6 +16,7 @@ public class DirectoryTreeUtils implements InitializeUtils {
     private TreeView<String> treeView;
     private TreeItem<String> rootItem = new TreeItem<>("My Computer");
     private TreeItem<String> selectedItem;
+    private int count = 0;
 
     public DirectoryTreeUtils(TreeView<String> treeView) {
         this.treeView = treeView;

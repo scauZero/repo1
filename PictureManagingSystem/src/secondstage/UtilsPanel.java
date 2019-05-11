@@ -40,22 +40,22 @@ public class UtilsPanel extends JPanel{
 		this.setLayout(null);
 		this.setBackground(Color.cyan);
 		this.setBounds(0, 650, 1200, 250);
-		ImageIcon nextIcon = new ImageIcon("img/next.png");
+		ImageIcon nextIcon = new ImageIcon(getClass().getResource("/image/next.png"));
 		nextIcon = new ImageIcon(nextIcon.getImage().getScaledInstance(70, 50, Image.SCALE_DEFAULT));
 		
-		ImageIcon lastIcon = new ImageIcon("img/last.png");
+		ImageIcon lastIcon = new ImageIcon(getClass().getResource("/image/last.png"));
 		lastIcon = new ImageIcon(lastIcon.getImage().getScaledInstance(70, 50, Image.SCALE_DEFAULT));
 		
-		ImageIcon bigIcon = new ImageIcon("img/big.png");
+		ImageIcon bigIcon = new ImageIcon(getClass().getResource("/image/big.png"));
 		bigIcon = new ImageIcon(bigIcon.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
 		
-		ImageIcon smallIcon = new ImageIcon("img/small.png");
+		ImageIcon smallIcon = new ImageIcon(getClass().getResource("/image/small.png"));
 		smallIcon = new ImageIcon(smallIcon.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
 		
-		ImageIcon startIcon = new ImageIcon("img/begin.png");
+		ImageIcon startIcon = new ImageIcon(getClass().getResource("/image/begin.png"));
 		startIcon = new ImageIcon(startIcon.getImage().getScaledInstance(70, 50, Image.SCALE_DEFAULT));
 		
-		ImageIcon pauseIcon = new ImageIcon("img/pause.png");
+		ImageIcon pauseIcon = new ImageIcon(getClass().getResource("/image/pause.png"));
 		pauseIcon = new ImageIcon(pauseIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
 		
 		JButton next = new JButton(nextIcon);

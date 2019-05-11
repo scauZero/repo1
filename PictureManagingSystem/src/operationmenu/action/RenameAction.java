@@ -2,6 +2,7 @@ package operationmenu.action;
 
 import component.PaneUtils;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -9,13 +10,16 @@ import node.FlowPaneNode;
 import component.StaticUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 
 
 public class RenameAction extends MenuItemAction {
     private TextField inputField;
     private FlowPaneNode node;
-    public RenameAction(FlowPaneNode node) {
+    private PaneUtils pUtils;
+    public RenameAction(FlowPaneNode node,PaneUtils pUtils) {
         this.node = node;
+        this.pUtils = pUtils;
         action(this.node);
         StaticUtils.setRenamingIndex(this,true);
     }
@@ -52,10 +56,16 @@ public class RenameAction extends MenuItemAction {
         return tmp;
     }
     public void Rename(String newName){
-        File newFile = new File(presentFile.getParent()+"\\"+newName);
-        if (newFile.exists()){
-            //TODO:errorAlert : same name
-        }else {
+        if(newName.equals("")) {
+            newName = presentFile.getName();
+        }
+        File newFile = new File(presentFile.getParent() + "\\" + newName);
+        ArrayList<FlowPaneNode> nodeList = pUtils.getPaneNodeList();
+        if (hasSameName(newName,nodeList)) {
+            Alert errSameName = new Alert(Alert.AlertType.ERROR);
+            errSameName.setHeaderText("File"+newName+"is exists");
+            errSameName.show();
+        } else if (newFile!=presentFile){
             presentFile.renameTo(newFile);
             node.getChildren().remove(1);
             Label name = new Label(newFile.getName());
@@ -65,8 +75,18 @@ public class RenameAction extends MenuItemAction {
             node.getChildren().add(name);
             node.setNodePath(newFile.getPath());
             node.setNodeName(name);
-            StaticUtils.setRenamingIndex(this,false);
+            StaticUtils.setRenamingIndex(this, false);
         }
+    }
+    private boolean hasSameName(String newName, ArrayList<FlowPaneNode> nodeList){
+        boolean statement = false;
+        for (FlowPaneNode node:nodeList){
+            if (newName.equals(node.getNodeName().getText())&&!presentFile.getName().equals(node.getNodeName().getText())){
+                statement = true;
+                break;
+            }
+        }
+        return statement;
     }
     public String getInputField(){
         return inputField.getText();

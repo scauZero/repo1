@@ -1,23 +1,16 @@
 package secondstage;
 
-import java.awt.Color;
-import java.awt.Image;
 import java.awt.Point;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ViewerPanel extends JPanel{
-	ImageIcon icon = new ImageIcon("img/001.jpg");
+	ImageIcon icon = new ImageIcon("image/001.jpg");
 	private static ViewerPanel viewerPanel = null;
 	private JLabel label = new JLabel();
 //	拖动状态：0为未拖动，1为在拖动

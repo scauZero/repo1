@@ -147,7 +147,8 @@ public class PaneUtils implements InitializeUtils{
                 if (i*9+j>=flowPane.getChildren().size()){
                     break;
                 }
-                flowPane.getChildren().get(i*9+j).setStyle("-fx-background-color: rgb(199,253,255)");
+                if (paneNodeList.get(i*9+j).getClass().getName().equals("node.PictureNode"))
+                    paneNodeList.get(i*9+j).setStyle("-fx-background-color: rgb(199,253,255)");
             }
         }
     }
@@ -183,12 +184,10 @@ public class PaneUtils implements InitializeUtils{
 
     @Override
     public void initialize() {
-//        flowPane.setVgap(2.5);
-//        flowPane.setHgap(2.5);
         gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.rgb(199,253,255));
         setMouseEvent();
-        update();
+//        update();
     }
 
     @Override
@@ -216,6 +215,7 @@ public class PaneUtils implements InitializeUtils{
         ViewerService.setCurrentFiles(pictureFileList);
         loadPictures = new Thread(pictureFileList,pictureBoxList,scrollPane,flowPane);
         loadPictures.run();
+        System.out.println(loadPictures);
     }
 
     private void clearAllNodes(){
@@ -225,6 +225,7 @@ public class PaneUtils implements InitializeUtils{
         selectedSet.removeAll(selectedSet);
         pictureFileList.removeAll(pictureFileList);
         paneNodeList.removeAll(paneNodeList);
+        pictureBoxList.removeAll(pictureBoxList);
     }
 
     public void deleteEvent(int index) {

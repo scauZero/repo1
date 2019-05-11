@@ -19,7 +19,7 @@ public abstract class FlowPaneNode extends VBox implements Comparable{
     protected ImageView nodeView;
     protected Label nodeName;
     protected int index;
-    protected NodeMenu menu = new NodeMenu(this);
+    protected NodeMenu menu;
     protected int leftClickCount = 0;
     protected boolean isMultipleSelected = false;
     protected PaneUtils pUtils;
@@ -27,6 +27,7 @@ public abstract class FlowPaneNode extends VBox implements Comparable{
         this.nodePath = nodePath;
         this.index = index;
         this.pUtils = pUtils;
+        menu = new NodeMenu(this,pUtils);
         this.setPadding(new Insets(5));
     }
 

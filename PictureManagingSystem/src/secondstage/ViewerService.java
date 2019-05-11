@@ -34,7 +34,7 @@ public class ViewerService {
 	private ViewerService() {
 		
 		//测试用
-		/*this.currentFiles = testSetCurrentFiles("img");
+		/*this.currentFiles = testSetCurrentFiles("image");
 		this.currentFile = this.currentFiles.get(0);
 		open(this.currentFile);*/
 	}

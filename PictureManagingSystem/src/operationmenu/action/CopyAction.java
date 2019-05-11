@@ -29,6 +29,7 @@ public class CopyAction extends MenuItemAction {
 
     @Override
     public void action(FlowPaneNode node) {
+        System.out.println(node.getClass().getName());
         if (node.getClass().getName().equals("node.PictureNode"))
             StaticUtils.copyList.add(node);
     }

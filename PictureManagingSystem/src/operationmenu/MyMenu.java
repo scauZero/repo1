@@ -22,6 +22,5 @@ public abstract class MyMenu extends ContextMenu {
         setItemDisable();
     }
     public abstract void setItemDisable();
-
     public abstract void setItemEvent();
 }

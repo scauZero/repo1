@@ -42,7 +42,6 @@ public class Frame extends JFrame{
 		
 		public void init() {
 			this.setTitle("图片显示");
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);
 			this.setSize(width, height);
 			//在屏幕居中显示

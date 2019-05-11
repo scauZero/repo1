@@ -1,8 +1,8 @@
 package component;
 
 import javafx.scene.input.MouseEvent;
+import operationmenu.CopyList;
 import operationmenu.action.RenameAction;
-
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.util.ArrayList;
@@ -12,10 +12,13 @@ public class StaticUtils implements InitializeUtils{
     public static String desktopPath = new String(FileSystemView.getFileSystemView().getHomeDirectory().getPath());
     public static String presentPath = desktopPath;
     public static String directoryImage = "src/image/Directory.png";
+    public static String tmpPath = "src/image/tmpLoading.png";
     public static String[] endOfPicture = {".jpg",".jpeg",".gif",".bmp",".png"};
     public static int maxIndexCount = 0;
     public static int presentIndex = 0;
+    public static int multipleSelectedCount = 0;
     public static ArrayList<String> browsedPath = new ArrayList<>();
+    public static CopyList copyList = new CopyList();
     private static PaneUtils fUtils;
     private static ButtonUtils bUtils;
     private static DirectoryTreeUtils dUtils;
@@ -57,8 +60,8 @@ public class StaticUtils implements InitializeUtils{
         fUtils.singleSelectedEvent(index,event);
     }
 
-    public static void setRenamingIndex(RenameAction renameAction) {
-        fUtils.setRenaming(true,renameAction);
+    public static void setRenamingIndex(RenameAction renameAction,boolean statement) {
+        fUtils.setRenaming(statement,renameAction);
     }
 
     public static boolean isPicture(File f) {

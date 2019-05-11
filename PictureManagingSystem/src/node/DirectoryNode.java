@@ -1,10 +1,11 @@
 package node;
 
+import component.PaneUtils;
 import component.StaticUtils;
 
 public class DirectoryNode extends FlowPaneNode {
-    public DirectoryNode(String nodePath,int index) {
-        super(nodePath,index);
+    public DirectoryNode(String nodePath, int index, PaneUtils pUtils) {
+        super(nodePath,index,pUtils);
         init(StaticUtils.directoryImage);
     }
 
@@ -13,4 +14,8 @@ public class DirectoryNode extends FlowPaneNode {
         StaticUtils.jumpEvent(nodePath);
     }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }

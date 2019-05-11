@@ -29,6 +29,8 @@ public class MainUIController implements Initializable {
     private Button upperBtn ;
     @FXML
     private Canvas canvas;
+    @FXML
+    private ScrollPane scrollPane;
     private DirectoryTreeUtils dUtils;
     private TextFieldUtils tUtils;
     private StaticUtils sUtils;
@@ -38,7 +40,7 @@ public class MainUIController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         dUtils = new DirectoryTreeUtils(directoryTree);
         tUtils = new TextFieldUtils(pathField);
-        fUtils = new PaneUtils(flowPane,canvas);
+        fUtils = new PaneUtils(flowPane,canvas,scrollPane);
         bUtils = new ButtonUtils(backwardsBtn,forwardsBtn);
         sUtils = new StaticUtils(bUtils,dUtils,fUtils,tUtils);
     }

@@ -1,5 +1,6 @@
 package operationmenu.action;
 
+import component.PaneUtils;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -15,9 +16,15 @@ public class RenameAction extends MenuItemAction {
     private FlowPaneNode node;
     public RenameAction(FlowPaneNode node) {
         this.node = node;
-        action(node);
-        StaticUtils.setRenamingIndex(this);
+        action(this.node);
+        StaticUtils.setRenamingIndex(this,true);
     }
+
+    @Override
+    public void action(PaneUtils pUtils) {
+
+    }
+
     /*
      * 将原来放文字的label暂时替换为输入框，
      * 当输入回车的时候实现重命名
@@ -34,8 +41,7 @@ public class RenameAction extends MenuItemAction {
         TextField tmp = new TextField();
         tmp.setText(oldName);
         tmp.setPrefSize(100,10);
-        //TODO:将输入框设为焦点，并选中文字
-        //emmmmmmmmmmmmmmmmmmmmm
+        //TODO:焦点选中
         tmp.requestFocus();
         tmp.setAlignment(Pos.CENTER);
         tmp.setOnKeyPressed((event)->{
@@ -59,6 +65,7 @@ public class RenameAction extends MenuItemAction {
             node.getChildren().add(name);
             node.setNodePath(newFile.getPath());
             node.setNodeName(name);
+            StaticUtils.setRenamingIndex(this,false);
         }
     }
     public String getInputField(){

@@ -1,5 +1,6 @@
 package node;
 
+import component.PaneUtils;
 import operationmenu.NodeMenu;
 import component.StaticUtils;
 import javafx.geometry.Insets;
@@ -12,29 +13,20 @@ import javafx.scene.layout.VBox;
 import java.io.File;
 import java.util.Timer;
 
-public abstract class FlowPaneNode extends VBox {
+public abstract class FlowPaneNode extends VBox implements Comparable{
     protected String nodePath;
     protected Image nodeImage;
     protected ImageView nodeView;
     protected Label nodeName;
     protected int index;
-
-    public int getIndex() {
-        return index;
-    }
-
+    protected NodeMenu menu = new NodeMenu(this);
     protected int leftClickCount = 0;
     protected boolean isMultipleSelected = false;
-
-    public void setMultipleSelected(boolean multipleSelected) {
-        isMultipleSelected = multipleSelected;
-    }
-
-    protected NodeMenu menu = new NodeMenu(this);
-
-    public FlowPaneNode(String nodePath, int index) {
+    protected PaneUtils pUtils;
+    public FlowPaneNode(String nodePath, int index, PaneUtils pUtils) {
         this.nodePath = nodePath;
         this.index = index;
+        this.pUtils = pUtils;
         this.setPadding(new Insets(5));
     }
 
@@ -48,7 +40,7 @@ public abstract class FlowPaneNode extends VBox {
         nodeName.setWrapText(false);
         nodeName.setAlignment(Pos.CENTER);
         this.getChildren().addAll(nodeView, nodeName);
-        this.setMaxSize(115, 130);
+        this.setMinSize(115, 130);
         setVboxEvent();
     }
 
@@ -71,8 +63,10 @@ public abstract class FlowPaneNode extends VBox {
                 }
             } else if (event.getButton().equals(MouseButton.SECONDARY)) {
                 StaticUtils.flowPaneSelectedEvent(index,event);
-                if(!isMultipleSelected)
+                if(!isMultipleSelected) {
+                    menu.update();
                     menu.show(this, event.getScreenX(), event.getScreenY());
+                }
             }
         });
     }
@@ -82,21 +76,29 @@ public abstract class FlowPaneNode extends VBox {
     public String getNodePath() {
         return nodePath;
     }
-
     public void setNodePath(String nodePath) {
         this.nodePath = nodePath;
     }
-
     public void setClickCount(int clickCount) {
         this.leftClickCount = clickCount;
     }
-
     public Label getNodeName() {
         return nodeName;
     }
-
     public void setNodeName(Label nodeName) {
         this.nodeName = nodeName;
         nodeName.setAlignment(Pos.CENTER);
+    }
+    public int getIndex() {
+        return index;
+    }
+    public void setMultipleSelected(boolean multipleSelected) {
+        isMultipleSelected = multipleSelected;
+    }
+    public PaneUtils getpUtils() {
+        return pUtils;
+    }
+    public void setIndex(int i) {
+        this.index = i;
     }
 }

@@ -57,6 +57,7 @@ public class Frame extends JFrame{
 			Play play = new Play();
 			buffUtils.start();
 			setVisible(true);
+			setAlwaysOnTop(true);
 		}
 		
 }

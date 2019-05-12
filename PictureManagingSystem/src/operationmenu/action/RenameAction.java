@@ -21,7 +21,8 @@ public class RenameAction extends MenuItemAction {
         this.node = node;
         this.pUtils = pUtils;
         action(this.node);
-        StaticUtils.setRenamingIndex(this,true);
+        File newFile = new File(node.getNodePath());
+        StaticUtils.setRenamingIndex(this,true, presentFile,newFile);
     }
 
     @Override
@@ -58,6 +59,10 @@ public class RenameAction extends MenuItemAction {
     public void Rename(String newName){
         if(newName.equals("")) {
             newName = presentFile.getName();
+        }else {
+            if(!hasSuffix(newName)){
+                newName = newName + getSuffix(presentFile);
+            }
         }
         File newFile = new File(presentFile.getParent() + "\\" + newName);
         ArrayList<FlowPaneNode> nodeList = pUtils.getPaneNodeList();
@@ -66,7 +71,9 @@ public class RenameAction extends MenuItemAction {
             errSameName.setHeaderText("File"+newName+"is exists");
             errSameName.show();
         } else if (newFile!=presentFile){
-            presentFile.renameTo(newFile);
+            while (!presentFile.renameTo(newFile)){
+                System.gc();
+            }
             node.getChildren().remove(1);
             Label name = new Label(newFile.getName());
             name.setAlignment(Pos.CENTER);
@@ -75,9 +82,32 @@ public class RenameAction extends MenuItemAction {
             node.getChildren().add(name);
             node.setNodePath(newFile.getPath());
             node.setNodeName(name);
-            StaticUtils.setRenamingIndex(this, false);
+            StaticUtils.setRenamingIndex(this, false,presentFile,newFile);
         }
     }
+
+    private String getSuffix(File presentFile) {
+        StringBuffer suffix = new StringBuffer();
+        for (int i = 0; i<StaticUtils.endOfPicture.length;i++){
+            if(presentFile.getName().toLowerCase().endsWith(StaticUtils.endOfPicture[i])){
+                suffix.append(StaticUtils.endOfPicture[i]);
+                break;
+            }
+        }
+        return String.valueOf(suffix);
+    }
+
+    private boolean hasSuffix(String newName) {
+        boolean statement = false;
+        for (int i = 0; i<StaticUtils.endOfPicture.length;i++){
+            if(newName.toLowerCase().endsWith(StaticUtils.endOfPicture[i])){
+                statement = true;
+                break;
+            }
+        }
+        return statement;
+    }
+
     private boolean hasSameName(String newName, ArrayList<FlowPaneNode> nodeList){
         boolean statement = false;
         for (FlowPaneNode node:nodeList){

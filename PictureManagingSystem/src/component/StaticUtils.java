@@ -60,8 +60,8 @@ public class StaticUtils implements InitializeUtils{
         fUtils.singleSelectedEvent(index,event);
     }
 
-    public static void setRenamingIndex(RenameAction renameAction,boolean statement) {
-        fUtils.setRenaming(statement,renameAction);
+    public static void setRenamingIndex(RenameAction renameAction, boolean statement, File presentFile, File newFile) {
+        fUtils.setRenaming(statement,renameAction,presentFile,newFile);
     }
 
     public static boolean isPicture(File f) {

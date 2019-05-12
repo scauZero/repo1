@@ -32,7 +32,7 @@ public abstract class FlowPaneNode extends VBox implements Comparable{
     }
 
     public void init(String imagePath) {
-        nodeImage = new Image("file:" + imagePath);
+        nodeImage = new Image("file:" + imagePath,100,100,false,true);
         nodeView = new ImageView(nodeImage);
         nodeView.setFitWidth(105);
         nodeView.setFitHeight(110);
@@ -40,8 +40,9 @@ public abstract class FlowPaneNode extends VBox implements Comparable{
         nodeName.setMaxSize(105, 15);
         nodeName.setWrapText(false);
         nodeName.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.CENTER);
         this.getChildren().addAll(nodeView, nodeName);
-        this.setMinSize(115, 130);
+        this.setMinSize(115, 135);
         setVboxEvent();
     }
 

@@ -23,30 +23,47 @@ public class PasteAction extends MenuItemAction {
 
     @Override
     public void action(PaneUtils pUtils) {
+        boolean success = true;
+        int count = 0;
         for (File file: StaticUtils.copyList) {
-            try {
-                Files.copy(file.toPath(),new File(StaticUtils.presentPath+"\\"+file.getName()).toPath());
-            } catch (IOException e) {
+            File tmp = new File(StaticUtils.presentPath+"\\"+file.getName());
+            if(!tmp.exists()) {
+                try {
+                    Files.copy(file.toPath(), new File(StaticUtils.presentPath + "\\" + file.getName()).toPath());
+                    count++;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
                 Alert err = new Alert(Alert.AlertType.ERROR);
-                err.setHeaderText("复制错误");
-                e.printStackTrace();
+                err.setHeaderText("复制错误,有相同的文件:"+tmp.getName());
+                err.show();
+                success = false;
             }
         }
-        pUtils.update();
+        if (success||count!=0) {
+            pUtils.update();
+        }
         StaticUtils.copyList.removeAll(StaticUtils.copyList);
     }
 
     @Override
     public void action(FlowPaneNode node) {
         for (File file: StaticUtils.copyList) {
-            try {
-                Files.copy(file.toPath(),new File(node.getNodePath()+"\\"+file.getName()).toPath());
-            } catch (IOException e) {
+            File tmp = new File(node.getNodePath()+"\\"+file.getName());
+                if(!tmp.exists()) {
+                    try {
+                        Files.copy(file.toPath(), new File(node.getNodePath() + "\\" + file.getName()).toPath());
+                    } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
                 Alert err = new Alert(Alert.AlertType.ERROR);
-                err.setHeaderText("复制错误");
-                e.printStackTrace();
+                err.setHeaderText("复制错误,有相同的文件:"+tmp.getName());
+                err.show();
+                break;
             }
         }
-        StaticUtils.copyList.removeAll(StaticUtils.copyList);
+            StaticUtils.copyList.removeAll(StaticUtils.copyList);
     }
 }

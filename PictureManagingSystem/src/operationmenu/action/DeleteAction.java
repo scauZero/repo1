@@ -4,11 +4,8 @@ package operationmenu.action;
 import component.PaneUtils;
 import node.FlowPaneNode;
 import component.StaticUtils;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 
 public class DeleteAction extends MenuItemAction{
     public DeleteAction(FlowPaneNode node) {
@@ -20,14 +17,14 @@ public class DeleteAction extends MenuItemAction{
     @Override
     public void action(PaneUtils pUtils) {
         ArrayList<FlowPaneNode> nodeList = pUtils.getPaneNodeList();
+        ArrayList<FlowPaneNode> pictureList = new ArrayList<FlowPaneNode>();
         HashSet<Integer> selectedIndex = pUtils.getSelectedSet();
-        Iterator iter = selectedIndex.iterator();
         Integer[] tmp = selectedIndex.toArray(new Integer[selectedIndex.size()]);
         for (int i = 0; i<tmp.length; i++){
-            action(nodeList.get(tmp[i]));
-            for (int j = i+1; j < tmp.length; j++) {
-                tmp[j]--;
-            }
+            pictureList.add(nodeList.get(tmp[i]));
+        }
+        for (FlowPaneNode node:pictureList){
+            action(node);
         }
         pUtils.setIsMultipleSelected(false);
     }
@@ -35,8 +32,11 @@ public class DeleteAction extends MenuItemAction{
     @Override
     public void action(FlowPaneNode node) {
         setFile(node);
-        String parent = presentFile.getParent();
-        if(presentFile.delete())
-            StaticUtils.deleteEvent(node.getIndex());//刷新界面
+        int count = 0;
+        while(!presentFile.delete()){
+            System.gc();
+            System.out.println(presentFile.getName()+" gc times:"+ ++count);
+        }
+        StaticUtils.deleteEvent(node.getIndex());//刷新界面
     }
 }

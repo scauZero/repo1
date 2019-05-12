@@ -13,4 +13,10 @@ public class CopyList extends ArrayList<File> {
     public void add(FlowPaneNode node) {
         super.add(new File(node.getNodePath()));
     }
+
+    public void remove(int from, int to) {
+        if(from!=to) {
+            super.removeRange(from, to);
+        }
+    }
 }

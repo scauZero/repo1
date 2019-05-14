@@ -16,7 +16,6 @@ public class DirectoryTreeUtils implements InitializeUtils {
     private TreeView<String> treeView;
     private TreeItem<String> rootItem = new TreeItem<>("My Computer");
     private TreeItem<String> selectedItem;
-    private int count = 0;
 
     public DirectoryTreeUtils(TreeView<String> treeView) {
         this.treeView = treeView;
@@ -150,6 +149,7 @@ public class DirectoryTreeUtils implements InitializeUtils {
         treeView.setRoot(rootItem);
         treeView.setShowRoot(false);
         setTreeViewSelectedEvent(treeView);
+        treeView.setStyle("-fx-border-color:  rgb(92,172,238);-fx-border-width: 3;-fx-font-size: 14");
     }
 
     @Override

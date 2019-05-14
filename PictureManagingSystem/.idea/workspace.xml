@@ -2,38 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce97605b-2682-407f-93de-3b9429035b52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/component/TextUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ToolTipEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ToolTipTimerTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/DirectoryTreeUtils$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/DirectoryTreeUtils$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/DirectoryTreeUtils$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/DirectoryTreeUtils$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/DirectoryTreeUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/DirectoryTreeUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/PaneUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/PaneUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/pictureload/Thread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/component/pictureload/Thread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/controller/MainUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/controller/MainUIController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/controller/MultipleRenameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/controller/MultipleRenameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/controller/ToolTipEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/controller/ToolTipTimerTask.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/node/FlowPaneNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/node/FlowPaneNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/node/NodeTimer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/operationmenu/NodeMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/operationmenu/NodeMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/operationmenu/action/RenameAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/operationmenu/action/RenameAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/BuffUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/BuffUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/Frame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/Frame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/Play.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/Play.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/ViewerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/secondstage/ViewerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/operationmenu/action/DeleteAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/operationmenu/action/DeleteAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/stage/MainStage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/stage/MainStage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/view/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/view/MainUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PictureManagingSystem/view/MultipleRenameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PictureManagingSystem/view/MultipleRenameUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/DirectoryTreeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/DirectoryTreeUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/PaneUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/PaneUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/StaticUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/StaticUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/pictureload/Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/pictureload/Thread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/MainUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/MultipleRenameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MultipleRenameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ToolTipEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/ToolTipEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ToolTipTimerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/ToolTipTimerTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/node/FlowPaneNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/node/FlowPaneNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/node/NodeTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/node/NodeTimerTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operationmenu/NodeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operationmenu/NodeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operationmenu/action/RenameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operationmenu/action/RenameAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/secondstage/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/secondstage/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/secondstage/Play.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/secondstage/Play.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/secondstage/ViewerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/secondstage/ViewerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operationmenu/action/DeleteAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/operationmenu/action/DeleteAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stage/MainStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/stage/MainStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MainUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MultipleRenameUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MultipleRenameUI.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,22 +57,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/PaneUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="58" column="20" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-              <folding>
-                <element signature="e#11268#11269#0" expanded="true" />
-                <element signature="e#11834#11835#0" expanded="true" />
-                <element signature="e#11916#11917#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="322">
+              <caret line="171" column="71" lean-forward="true" selection-start-line="171" selection-start-column="71" selection-end-line="171" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/stage/MainStage.java">
+        <entry file="jar://D:/Java SE jdk/javafx-src.zip!/com/sun/javafx/event/EventHandlerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="269">
+              <caret line="237" selection-start-line="237" selection-end-line="237" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/operationmenu/action/DeleteAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/MultipleRenameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="128" column="69" lean-forward="true" selection-start-line="128" selection-start-column="69" selection-end-line="128" selection-end-column="69" />
+            <state relative-caret-position="158">
+              <caret line="155" selection-start-line="155" selection-end-line="155" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,20 +97,32 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/MainUI.fxml">
+        <entry file="file://$PROJECT_DIR$/src/component/DirectoryTreeUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+            <state relative-caret-position="346">
+              <caret line="151" column="81" selection-start-line="151" selection-start-column="81" selection-end-line="151" selection-end-column="81" />
+              <folding>
+                <element signature="e#4594#4595#0" expanded="true" />
+                <element signature="e#4654#4655#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/MainUIController.java">
+        <entry file="file://$PROJECT_DIR$/src/component/ToolTipEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="46" column="68" lean-forward="true" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+            <state relative-caret-position="-216">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/component/ToolTipTimerTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,10 +131,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/component/StaticUtils.java">
+        <entry file="file://$PROJECT_DIR$/src/component/pictureload/Thread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+            <state relative-caret-position="3874">
+              <caret line="161" selection-start-line="161" selection-end-line="161" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,12 +143,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/operationmenu/action/RenameAction.java">
+        <entry file="file://$PROJECT_DIR$/src/view/MainUI.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="84" column="64" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
+            <state relative-caret-position="806">
+              <caret line="43" column="127" selection-start-line="43" selection-start-column="127" selection-end-line="43" selection-end-column="127" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/node/FlowPaneNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2709#2710#0" expanded="true" />
+                <element signature="e#2796#2797#0" expanded="true" />
+                <element signature="e#2892#2893#0" expanded="true" />
+                <element signature="e#2956#2957#0" expanded="true" />
+                <element signature="method#setNodeName#0;class#FlowPaneNode#0" />
+                <element signature="e#3141#3142#0" expanded="true" />
+                <element signature="e#3584#3585#0" expanded="true" />
+                <element signature="e#3637#3638#0" expanded="true" />
+                <element signature="e#3322#3323#0" expanded="true" />
+                <element signature="e#3386#3387#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,10 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Plat</find>
-      <find>135</find>
-      <find>vBoxWidth+hGap</find>
-      <find>vBoxHeight+vGap</find>
       <find>X</find>
       <find>Row</find>
       <find>Col</find>
@@ -188,6 +213,10 @@
       <find>canc</find>
       <find>rename</find>
       <find>renaming</find>
+      <find>setrenam</find>
+      <find>update()</find>
+      <find>treeitem</find>
+      <find>selected</find>
     </findStrings>
     <replaceStrings>
       <replace>y</replace>
@@ -211,8 +240,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/utils/CanvasUtils.java" />
-        <option value="$PROJECT_DIR$/src/utils/StaticUtils.java" />
         <option value="$PROJECT_DIR$/src/node/NodeConer.java" />
         <option value="$PROJECT_DIR$/src/node/NodeConner.java" />
         <option value="$PROJECT_DIR$/src/utils/PaneUtils.java" />
@@ -221,7 +248,6 @@
         <option value="$PROJECT_DIR$/src/controller/RenameController.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/stage/Main.java" />
-        <option value="$PROJECT_DIR$/src/stage/MainStage.java" />
         <option value="$PROJECT_DIR$/src/operationmenu/action/SelectAllAction.java" />
         <option value="$PROJECT_DIR$/src/multipleeventservice/MultipleStaticAction.java" />
         <option value="$PROJECT_DIR$/src/node/DirectoryNode.java" />
@@ -236,32 +262,35 @@
         <option value="$PROJECT_DIR$/src/secondstage/BuffUtils.java" />
         <option value="$PROJECT_DIR$/src/operationmenu/MyMenu.java" />
         <option value="$PROJECT_DIR$/src/operationmenu/action/CopyAction.java" />
-        <option value="$PROJECT_DIR$/src/component/DirectoryTreeUtils.java" />
         <option value="$PROJECT_DIR$/src/node/PictureNode.java" />
         <option value="$PROJECT_DIR$/src/component/pictureload/LoadPicture.java" />
-        <option value="$PROJECT_DIR$/src/node/FlowPaneNode.java" />
         <option value="$PROJECT_DIR$/src/operationmenu/CopyList.java" />
         <option value="$PROJECT_DIR$/src/operationmenu/action/PasteAction.java" />
-        <option value="$PROJECT_DIR$/src/operationmenu/action/DeleteAction.java" />
         <option value="$PROJECT_DIR$/src/controller/ToolTipTimeMask.java" />
         <option value="$PROJECT_DIR$/src/controller/ToolTipTimeTask.java" />
         <option value="$PROJECT_DIR$/src/view/MultipleRenameUI.fxml" />
         <option value="$PROJECT_DIR$/src/operationmenu/PaneMenu.java" />
         <option value="$PROJECT_DIR$/src/controller/ToolTipTimerTask.java" />
-        <option value="$PROJECT_DIR$/src/controller/ToolTipEvent.java" />
         <option value="$PROJECT_DIR$/src/operationmenu/NodeMenu.java" />
         <option value="$PROJECT_DIR$/src/secondstage/UtilsPanel.java" />
         <option value="$PROJECT_DIR$/src/secondstage/Play.java" />
         <option value="$PROJECT_DIR$/src/secondstage/Frame.java" />
         <option value="$PROJECT_DIR$/src/secondstage/ViewerService.java" />
         <option value="$PROJECT_DIR$/src/component/pictureload/Thread.java" />
-        <option value="$PROJECT_DIR$/src/view/MainUI.fxml" />
         <option value="$PROJECT_DIR$/src/component/TextUtils.java" />
-        <option value="$PROJECT_DIR$/src/controller/MainUIController.java" />
-        <option value="$PROJECT_DIR$/src/controller/MultipleRenameController.java" />
-        <option value="$PROJECT_DIR$/src/component/PaneUtils.java" />
         <option value="$PROJECT_DIR$/src/component/StaticUtils.java" />
         <option value="$PROJECT_DIR$/src/operationmenu/action/RenameAction.java" />
+        <option value="$PROJECT_DIR$/src/controller/MultipleRenameController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ToolTipEvent.java" />
+        <option value="$PROJECT_DIR$/src/operationmenu/action/DeleteAction.java" />
+        <option value="$PROJECT_DIR$/src/component/pictureload/ToolTipEvent.java" />
+        <option value="$PROJECT_DIR$/src/stage/MainStage.java" />
+        <option value="$PROJECT_DIR$/src/controller/MainUIController.java" />
+        <option value="$PROJECT_DIR$/src/view/MainUI.fxml" />
+        <option value="$PROJECT_DIR$/src/component/DirectoryTreeUtils.java" />
+        <option value="$PROJECT_DIR$/src/component/ToolTipEvent.java" />
+        <option value="$PROJECT_DIR$/src/component/PaneUtils.java" />
+        <option value="$PROJECT_DIR$/src/node/FlowPaneNode.java" />
       </list>
     </option>
   </component>
@@ -284,7 +313,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -369,13 +397,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557821009251" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557835625907" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../新建文件夹/repo1/PictureManagingSystem" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -475,11 +504,12 @@
       <workItem from="1557667611744" duration="8444000" />
       <workItem from="1557677561635" duration="1549000" />
       <workItem from="1557715392818" duration="35774000" />
+      <workItem from="1557823506255" duration="9947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244555000" />
+    <option name="totallyTimeSpent" value="254569000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -492,8 +522,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.114893615" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11595745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -502,18 +533,17 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32901832" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4973404" visible="true" weight="0.22653721" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4973404" weight="0.26213592" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39805827" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4994681" weight="0.32901832" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.05609493" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.44660193" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4994681" weight="0.32901832" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50265956" side_tool="true" weight="0.197411" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4994681" weight="0.09277239" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32978722" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -524,6 +554,7 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32978722" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23085107" />
@@ -575,6 +606,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/component/PaneUtils.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="event" />
@@ -591,22 +632,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/node/DirectoryNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/image/Loading.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/secondstage/Main.java" />
     <entry file="jar://D:/Java SE jdk/javafx-src.zip!/javafx/scene/image/Image.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -684,21 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/operationmenu/action/DeleteAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#425#426#0" expanded="true" />
-            <element signature="e#633#647#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/operationmenu/action/PasteAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -756,16 +766,6 @@
           <folding>
             <element signature="e#2975#2976#0" expanded="true" />
             <element signature="e#3004#3005#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stage/MultipleRenameStage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -842,30 +842,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ToolTipTimerTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="9" selection-start-line="9" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/operationmenu/NodeMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
           <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ToolTipEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -939,18 +919,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/node/FlowPaneNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <element signature="e#2930#2931#0" expanded="true" />
-            <element signature="e#2961#2962#0" expanded="true" />
-            <element signature="method#setNodeName#0;class#FlowPaneNode#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/pictureload/LoadPicture.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -958,88 +926,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/pictureload/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3672">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/stage/MainStage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/MainUI.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MainUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="46" column="68" lean-forward="true" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/DirectoryTreeUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="15" />
-          <folding>
-            <element signature="e#4594#4595#0" expanded="true" />
-            <element signature="e#4654#4655#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/TextUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="71" column="64" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/PaneUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="58" column="20" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
-          <folding>
-            <element signature="e#11268#11269#0" expanded="true" />
-            <element signature="e#11834#11835#0" expanded="true" />
-            <element signature="e#11916#11917#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/StaticUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MultipleRenameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="128" column="69" lean-forward="true" selection-start-line="128" selection-start-column="69" selection-end-line="128" selection-end-column="69" />
+        <state relative-caret-position="1829">
+          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1048,13 +938,173 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/operationmenu/action/RenameAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="84" column="64" selection-start-line="84" selection-start-column="64" selection-end-line="84" selection-end-column="64" />
+        <state relative-caret-position="31">
+          <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="jar://D:/Java SE jdk/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="2547" selection-start-line="2547" selection-end-line="2547" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stage/MultipleRenameStage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MainUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2294#2295#0" expanded="true" />
+            <element signature="e#2325#2326#0" expanded="true" />
+            <element signature="e#2485#2486#0" expanded="true" />
+            <element signature="e#2564#2565#0" expanded="true" />
+            <element signature="e#2642#2643#0" expanded="true" />
+            <element signature="e#2677#2678#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java SE jdk/javafx-src.zip!/javafx/scene/layout/Border.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="226" column="11" selection-start-line="226" selection-start-column="11" selection-end-line="226" selection-end-column="11" />
+          <folding>
+            <element signature="e#10000#10001#0" expanded="true" />
+            <element signature="e#10035#10036#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/TextUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stage/MainStage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/ToolTipTimerTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/pictureload/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3874">
+          <caret line="161" selection-start-line="161" selection-end-line="161" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MultipleRenameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java SE jdk/javafx-src.zip!/com/sun/javafx/event/EventHandlerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="237" selection-start-line="237" selection-end-line="237" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/operationmenu/action/DeleteAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/PaneUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="171" column="71" lean-forward="true" selection-start-line="171" selection-start-column="71" selection-end-line="171" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/ToolTipEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/DirectoryTreeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="151" column="81" selection-start-line="151" selection-start-column="81" selection-end-line="151" selection-end-column="81" />
+          <folding>
+            <element signature="e#4594#4595#0" expanded="true" />
+            <element signature="e#4654#4655#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/node/FlowPaneNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="72" column="11" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
+          <folding>
+            <element signature="e#2709#2710#0" expanded="true" />
+            <element signature="e#2796#2797#0" expanded="true" />
+            <element signature="e#2892#2893#0" expanded="true" />
+            <element signature="e#2956#2957#0" expanded="true" />
+            <element signature="method#setNodeName#0;class#FlowPaneNode#0" />
+            <element signature="e#3141#3142#0" expanded="true" />
+            <element signature="e#3584#3585#0" expanded="true" />
+            <element signature="e#3637#3638#0" expanded="true" />
+            <element signature="e#3322#3323#0" expanded="true" />
+            <element signature="e#3386#3387#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/MainUI.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="43" column="127" selection-start-line="43" selection-start-column="127" selection-end-line="43" selection-end-column="127" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
   <component name="masterDetails">

@@ -35,7 +35,6 @@ public class DeleteAction extends MenuItemAction{
         int count = 0;
         while(!presentFile.delete()){
             System.gc();
-            System.out.println(presentFile.getName()+" gc times:"+ ++count);
         }
         StaticUtils.deleteEvent(node.getIndex());//刷新界面
     }

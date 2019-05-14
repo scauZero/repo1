@@ -1,14 +1,19 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import component.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,6 +33,8 @@ public class MainUIController implements Initializable {
     private Button forwardsBtn;
     @FXML
     private Button upperBtn;
+    @FXML
+    private Button closeBtn;
     @FXML
     private Canvas canvas;
     @FXML
@@ -73,5 +80,17 @@ public class MainUIController implements Initializable {
             pathField.setText(sUtils.browsedPath.get(++sUtils.presentIndex));
             tUtils.update();
         }
+    }
+
+    public void closeBtnOnClicked(MouseEvent event) {
+        Platform.exit();
+    }
+
+    public void closeBtnEnter(MouseEvent event) {
+        closeBtn.setStyle("-fx-background-color: RED");
+    }
+
+    public void closeBtnExit(MouseEvent event) {
+        closeBtn.setStyle("-fx-background-color: transparent");
     }
 }

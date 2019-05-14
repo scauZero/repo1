@@ -119,7 +119,6 @@ public class PaneUtils implements InitializeUtils {
 
     private void clickPaneEvent(MouseEvent event) {
         menu.hide();
-        System.out.println(multipleSelectLock);
         if(!multipleSelectLock) {
             if (isRenaming) {
                 renameAction.Rename(renameAction.getInputField());//如果改名时点击

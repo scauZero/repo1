@@ -1,4 +1,4 @@
-package controller;
+package component;
 
 import javafx.application.Platform;
 import javafx.scene.control.Button;

@@ -1,6 +1,7 @@
 package node;
 
 import component.PaneUtils;
+import javafx.scene.layout.Border;
 import operationmenu.NodeMenu;
 import component.StaticUtils;
 import javafx.geometry.Insets;
@@ -28,7 +29,6 @@ public abstract class FlowPaneNode extends VBox implements Comparable{
         this.index = index;
         this.pUtils = pUtils;
         menu = new NodeMenu(this,pUtils);
-        this.setPadding(new Insets(5));
     }
 
     public void init(String imagePath) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.canvas.*?>
@@ -9,47 +10,62 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1380.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainUIController">
-   <bottom>
-      <HBox prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text fx:id="totalSize" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="199.240234375" />
-            <Text fx:id="selectCount" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1048.240234375" />
-         </children>
-      </HBox>
-   </bottom>
-   <left>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <TreeView fx:id="directoryTree" prefHeight="865.0" prefWidth="200.0" />
-         </children>
-      </HBox>
-   </left>
-   <right>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" maxWidth="-Infinity" prefHeight="890.0" prefWidth="1180.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
-         <content>
-            <StackPane prefHeight="890.0" prefWidth="1150.0" style="-fx-background-color: WHITE;">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="990.0" prefWidth="1380.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainUIController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1380.0" style="-fx-border-color: rgb(92,172,238); -fx-border-width: 3;">
+         <left>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Canvas fx:id="canvas" height="8000.0" width="1165.0">
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </Canvas>
-                  <FlowPane fx:id="flowPane" prefHeight="890.0" prefWidth="1150.0" />
+                  <TreeView fx:id="directoryTree" prefHeight="865.0" prefWidth="200.0" />
                </children>
-            </StackPane>
-         </content>
-      </ScrollPane>
-   </right>
-   <top>
-      <Pane prefHeight="40.0" prefWidth="1380.0" style="-fx-background-color: rgb(92,172,238);" BorderPane.alignment="CENTER">
+            </HBox>
+         </left>
+         <right>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="-Infinity" prefHeight="880.0" prefWidth="1180.0" style="-fx-background-color: rgb(92,172,238);" BorderPane.alignment="CENTER">
+               <content>
+                  <StackPane prefHeight="874.0" prefWidth="1175.0" style="-fx-background-color: WHITE;">
+                     <children>
+                        <Canvas fx:id="canvas" height="872.0" width="1175.0">
+                           <effect>
+                              <Blend />
+                           </effect>
+                        </Canvas>
+                        <FlowPane fx:id="flowPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="874.0" prefWidth="1176.0" style="-fx-border-color: rgb(92,172,238); -fx-border-width: 3;" />
+                     </children>
+                  </StackPane>
+               </content>
+            </ScrollPane>
+         </right>
+         <top>
+            <Pane prefHeight="80.0" prefWidth="1380.0" style="-fx-background-color: rgb(92,172,238);" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="pathField" layoutX="229.0" layoutY="49.0" prefHeight="23.0" prefWidth="1115.0" />
+                  <Button fx:id="upperBtn" layoutX="163.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#upperBtnOnClicked" prefWidth="66.0" text="上一级" />
+                  <Button fx:id="backwardsBtn" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#backwardsBtnOnClicked" prefHeight="23.0" prefWidth="66.0" style="-fx-border-radius: 10;" text="后退" />
+                  <Button fx:id="forwardsBtn" layoutX="87.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#forwardsBtnOnClicked" prefHeight="23.0" prefWidth="66.0" text="前进" />
+                  <Button fx:id="goBtn" layoutX="1274.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#goButtonOnClicked" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Go" />
+                  <Button fx:id="closeBtn" alignment="CENTER" layoutX="1311.0" layoutY="-7.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#closeBtnOnClicked" onMouseEntered="#closeBtnEnter" onMouseExited="#closeBtnExit" prefHeight="42.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="×" textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </top>
+      </BorderPane>
+      <HBox layoutY="960.0" prefHeight="30.0" prefWidth="1380.0" style="-fx-background-color: rgb(64,64,64);">
          <children>
-            <TextField fx:id="pathField" layoutX="229.0" layoutY="9.0" prefHeight="23.0" prefWidth="1115.0" />
-            <Button fx:id="upperBtn" layoutX="163.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#upperBtnOnClicked" prefWidth="66.0" text="上一级" />
-            <Button fx:id="backwardsBtn" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#backwardsBtnOnClicked" prefHeight="23.0" prefWidth="66.0" style="-fx-border-radius: 10;" text="后退" />
-            <Button fx:id="forwardsBtn" layoutX="87.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#forwardsBtnOnClicked" prefHeight="23.0" prefWidth="66.0" text="前进" />
-            <Button fx:id="goBtn" layoutX="1274.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#goButtonOnClicked" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Go" />
+            <Text fx:id="totalSize" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="326.240234375">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text fx:id="selectCount" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1048.240234375">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
          </children>
-      </Pane>
-   </top>
-</BorderPane>
+      </HBox>
+   </children>
+</Pane>

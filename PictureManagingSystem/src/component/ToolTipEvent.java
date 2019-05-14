@@ -1,4 +1,4 @@
-package controller;
+package component;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -14,7 +14,6 @@ public class ToolTipEvent {
         this.tooltip = tooltip;
         this.confirm = confirm;
         this.textField = textField;
-        System.out.println("1");
         toolTipShow(textField);
     }
 

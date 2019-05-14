@@ -1,7 +1,7 @@
 package controller;
 
-import component.PaneUtils;
 import component.StaticUtils;
+import component.ToolTipEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;

@@ -24,6 +24,7 @@ public class NodeMenu extends MyMenu {
         }
         if(paneNode.getClass().getName().equals("node.DirectoryNode")){
             copy.setDisable(true);
+            rename.setDisable(true);
         }
     }
 

@@ -27,14 +27,16 @@ public class ViewerService {
 	private double range = 0.2;
 	//放大倍数
 	private static double times = 0;
-	private Play play = null;
+	//private Play play = null;
 	//true为不运行幻灯片
-	private boolean pFlag = true;
+	public boolean pFlag = true;
+	
+	public Play play = null;
 	
 	private ViewerService() {
 		
 		//测试用
-		/*this.currentFiles = testSetCurrentFiles("image");
+		/*this.currentFiles = testSetCurrentFiles("img");
 		this.currentFile = this.currentFiles.get(0);
 		open(this.currentFile);*/
 	}
@@ -97,18 +99,12 @@ public class ViewerService {
 			newIcon = new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
 		// 改变显示的图片
 			viewerPanel.setLabelIcon(newIcon);
-			System.out.println(this.currentFile.getPath());
-			System.out.println(viewerPanel.getLabel().getName());
 		}
-		if(isEnlarge)
-			System.out.println("big!");
-		else
-			System.out.println("small!");
+
 	}
 	
 	private static void resetTimes() {
 		times = 0;
-		System.out.println("reset times!");
 	}
 	
 	private void next(ViewerPanel viewerPanel) {
@@ -116,17 +112,14 @@ public class ViewerService {
 			int index = this.currentFiles.indexOf(this.currentFile);
 			//下一个
 			if(index+1 < this.currentFiles.size()) {
-				System.out.println("next success");
 				this.currentFile = (File) this.currentFiles.get(index + 1);
-				System.out.println("next:"+this.currentFile.getName());
 				opent(this.currentFile);
 			}
 		}
-		if(this.currentFiles == null)
-			System.out.println("currentFiles null");
-		if(this.currentFiles.isEmpty())
-			System.out.println("currentFiles empty");
-		System.out.println("next!");
+		if(this.currentFiles == null);
+
+		if(this.currentFiles.isEmpty());
+
 	}
 	
 	private void last(ViewerPanel viewerPanel) {
@@ -134,54 +127,49 @@ public class ViewerService {
 			int index = this.currentFiles.indexOf(this.currentFile);
 			// 打开上一个
 			if (index > 0) {
-				System.out.println("last success");
 				this.currentFile = (File) this.currentFiles.get(index - 1);
-				System.out.println("next:"+this.currentFile.getName());
 				opent(this.currentFile);
 			}
 		}
-		if(this.currentFiles == null)
-			System.out.println("currentFiles null");
-		if(this.currentFiles.isEmpty())
-			System.out.println("currentFiles empty");
-		System.out.println("last!");
+		if(this.currentFiles == null);
+
+		if(this.currentFiles.isEmpty());
+
 	}
-	
+
 	private void start() {
-		System.out.println("start");
 		if(play == null) {
-			play = new Play();
-			play.start();
+			play = Play.getInstance();
+			//play.start();
 		}
-		if(pFlag) {
-			play.setContinue(false);
+		if(this.pFlag) {
 			pFlag = false;
+			play.resumePlay();
 		}
 	}
 	
 	private void pause() {
-		System.out.println("pause");
 		if(play == null) {
-			play = new Play();
-			play.start();
+			play = Play.getInstance();
+			//play.start();
 		}
-		if(!pFlag) {
-			play.setContinue(true);
+		if(!this.pFlag) {
 			pFlag = true;
+			play.pausePlay();
 		}
 	}
 	
 	public void buttonDo(ViewerPanel viewerPanel, String cmd) {
-		if(cmd.equals("next") && pFlag) {
+		if(cmd.equals("next") && this.pFlag) {
 			next(viewerPanel);
 		}
-		if(cmd.equals("last") && pFlag) {
+		if(cmd.equals("last") && this.pFlag) {
 			last(viewerPanel);
 		}
-		if(cmd.equals("big") && pFlag) {
+		if(cmd.equals("big") && this.pFlag) {
 			zoom(viewerPanel, true);
 		}
-		if(cmd.equals("small") && pFlag) {
+		if(cmd.equals("small") && this.pFlag) {
 			zoom(viewerPanel, false);
 		}
 		if(cmd.equals("start")) {
@@ -198,7 +186,7 @@ public class ViewerService {
 	//导入文件夹内图片，集合内已经是过滤好的文件
 	 * 目录树点进一个文件夹内有图片时，调用此方法，把图片文件集合传入
 	*/	
-	public static void setCurrentFiles(List<File> files){
+	public static void setCurrentFiles(ArrayList<File> files){
 		currentFiles = files;
 	}
 	
@@ -206,17 +194,18 @@ public class ViewerService {
 	 * 测试用
 	*/
 	private List<File> testSetCurrentFiles(String path){
+		System.out.println("testSetCurrentFiles");
 		List<File> files = new ArrayList<File>();
 		File dir = new File(path);
 		File [] tfiles = dir.listFiles();
 		for(int i=0;i<tfiles.length;i++) {
 			files.add(tfiles[i]);
 		}
-		Iterator <File> it = files.iterator();
+		/*Iterator <File> it = files.iterator();
 		while(it.hasNext()) {
 			File file = (File)it.next();
 			System.out.println(file.getName());
-		}
+		}*/
 		return files;
 	}
 	
@@ -306,7 +295,11 @@ public class ViewerService {
 
 
 
-	public List<File> getCurrentFiles() {
+	public static List<File> getCurrentFiles() {
 		return currentFiles;
+	}
+	
+	public boolean getisContinue() {
+		return this.pFlag;
 	}
 }

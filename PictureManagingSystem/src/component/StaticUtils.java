@@ -23,12 +23,15 @@ public class StaticUtils implements InitializeUtils{
     private static ButtonUtils bUtils;
     private static DirectoryTreeUtils dUtils;
     private static TextFieldUtils tUtils;
+    private static TextUtils textUtils;
+
     public static void jumpEvent(String path){
         updateList(path);
         presentPath = browsedPath.get(presentIndex);
         fUtils.update();
         bUtils.update();
         tUtils.setPathField(presentPath);
+        setMultipleSelectedCount(0);
     }
 
     private static void updateList(String path){
@@ -48,11 +51,12 @@ public class StaticUtils implements InitializeUtils{
         }
     }
 
-    public StaticUtils(ButtonUtils bUtils, DirectoryTreeUtils dUtils, PaneUtils fUtils, TextFieldUtils tUtils){
+    public StaticUtils(ButtonUtils bUtils, DirectoryTreeUtils dUtils, PaneUtils fUtils, TextFieldUtils tUtils, TextUtils textUtils){
         this.dUtils = dUtils;
         this.tUtils = tUtils;
         this.fUtils = fUtils;
         this.bUtils = bUtils;
+        this.textUtils = textUtils;
         initialize();
     }
 
@@ -60,8 +64,8 @@ public class StaticUtils implements InitializeUtils{
         fUtils.singleSelectedEvent(index,event);
     }
 
-    public static void setRenamingIndex(RenameAction renameAction, boolean statement, File presentFile, File newFile) {
-        fUtils.setRenaming(statement,renameAction,presentFile,newFile);
+    public static void setRenamingIndex(RenameAction renameAction, boolean statement, File oldFile, File newFile) {
+        fUtils.setRenaming(statement,renameAction,oldFile,newFile);
     }
 
     public static boolean isPicture(File f) {
@@ -76,6 +80,11 @@ public class StaticUtils implements InitializeUtils{
 
     public static void deleteEvent(int index){
         fUtils.deleteEvent(index);
+    }
+
+    public static void setMultipleSelectedCount(int size) {
+        multipleSelectedCount = size;
+        textUtils.update();
     }
 
     @Override

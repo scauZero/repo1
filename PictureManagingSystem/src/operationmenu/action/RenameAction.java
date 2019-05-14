@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import node.FlowPaneNode;
 import component.StaticUtils;
+import secondstage.ViewerService;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class RenameAction extends MenuItemAction {
     private TextField inputField;
     private FlowPaneNode node;
     private PaneUtils pUtils;
+    private ArrayList<File> files;
     public RenameAction(FlowPaneNode node,PaneUtils pUtils) {
         this.node = node;
         this.pUtils = pUtils;
@@ -46,7 +48,6 @@ public class RenameAction extends MenuItemAction {
         TextField tmp = new TextField();
         tmp.setText(oldName);
         tmp.setPrefSize(100,10);
-        //TODO:焦点选中
         tmp.requestFocus();
         tmp.setAlignment(Pos.CENTER);
         tmp.setOnKeyPressed((event)->{
@@ -57,23 +58,22 @@ public class RenameAction extends MenuItemAction {
         return tmp;
     }
     public void Rename(String newName){
+        ViewerService.setCurrentFiles(null);
         if(newName.equals("")) {
             newName = presentFile.getName();
         }else {
-            if(!hasSuffix(newName)){
+            if(!hasSuffixInput(newName)){
                 newName = newName + getSuffix(presentFile);
             }
         }
         File newFile = new File(presentFile.getParent() + "\\" + newName);
         ArrayList<FlowPaneNode> nodeList = pUtils.getPaneNodeList();
+
         if (hasSameName(newName,nodeList)) {
             Alert errSameName = new Alert(Alert.AlertType.ERROR);
             errSameName.setHeaderText("File"+newName+"is exists");
             errSameName.show();
         } else if (newFile!=presentFile){
-            while (!presentFile.renameTo(newFile)){
-                System.gc();
-            }
             node.getChildren().remove(1);
             Label name = new Label(newFile.getName());
             name.setAlignment(Pos.CENTER);
@@ -83,27 +83,26 @@ public class RenameAction extends MenuItemAction {
             node.setNodePath(newFile.getPath());
             node.setNodeName(name);
             StaticUtils.setRenamingIndex(this, false,presentFile,newFile);
+            while (!presentFile.renameTo(newFile)){
+                System.gc();
+            }
         }
     }
 
     private String getSuffix(File presentFile) {
-        StringBuffer suffix = new StringBuffer();
-        for (int i = 0; i<StaticUtils.endOfPicture.length;i++){
-            if(presentFile.getName().toLowerCase().endsWith(StaticUtils.endOfPicture[i])){
-                suffix.append(StaticUtils.endOfPicture[i]);
-                break;
-            }
-        }
-        return String.valueOf(suffix);
+        int startIndex = presentFile.getName().lastIndexOf('.');
+        if (startIndex >= 0)
+            return new String(presentFile.getName().substring(startIndex));
+        else
+            return "";
     }
 
-    private boolean hasSuffix(String newName) {
+    private boolean hasSuffixInput(String newName) {
         boolean statement = false;
-        for (int i = 0; i<StaticUtils.endOfPicture.length;i++){
-            if(newName.toLowerCase().endsWith(StaticUtils.endOfPicture[i])){
-                statement = true;
-                break;
-            }
+        File tmp = new File(newName);
+        System.out.println(getSuffix(tmp));
+        if (!getSuffix(tmp).equals("")){
+            statement = true;
         }
         return statement;
     }

@@ -1,9 +1,15 @@
 package secondstage;
 
+import secondstage.BuffUtils;
+import secondstage.UtilsPanel;
+import secondstage.ViewerPanel;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -32,16 +38,27 @@ public class Frame extends JFrame{
 		private int height = 800;
 		private JPanel viewer = null;
 		private JPanel util = null;
-		BuffUtils buffUtils = null;
+		private BuffUtils buffUtils = null;
+		private static Frame frame = null;
+		private Play play = Play.getInstance();
 		
+		
+		
+		public static Frame getInstance() {
+			if(frame == null)
+				frame = new Frame();
+			frame.setVisible(true);
+			return frame;
+		}
 		
 		public Frame() {
 			super();
+			this.setAlwaysOnTop(true);
 			init();
 		}
 		
 		public void init() {
-			this.setTitle("图片显示");
+			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			this.setResizable(false);
 			this.setSize(width, height);
 			//在屏幕居中显示
@@ -53,11 +70,53 @@ public class Frame extends JFrame{
 			this.setLayout(null);
 			this.add(ViewerPanel.getInstance());
 			this.add(UtilsPanel.getInstance());
-			buffUtils = new BuffUtils();
-			Play play = new Play();
+			if(buffUtils == null)
+				buffUtils = new BuffUtils();
+			//if(play == null)
+				//play = new Play();
+			//.start();
 			buffUtils.start();
 			setVisible(true);
-			setAlwaysOnTop(true);
+			this.addWindowListener(new WindowListener() {
+				@Override
+				public void windowOpened(WindowEvent e) {
+					 
+	            }
+				@Override
+	            public void windowClosing(WindowEvent e) {
+	                // 此处加入操作动作
+					play.pausePlay();
+					ViewerService.getInstance().pFlag = true;
+	            }
+	 
+	            @Override
+	            public void windowClosed(WindowEvent e) {
+	 
+	            }
+	 
+	            @Override
+	            public void windowIconified(WindowEvent e) {
+	            }
+	 
+	            @Override
+	            public void windowDeiconified(WindowEvent e) {
+	 
+	            }
+	 
+	            @Override
+	            public void windowActivated(WindowEvent e) {
+	 
+	            }
+	 
+	            @Override
+	            public void windowDeactivated(WindowEvent e) {
+	 
+	            }
+			});
 		}
 		
+		
+		public void setShow() {
+			this.setVisible(true);
+		}
 }

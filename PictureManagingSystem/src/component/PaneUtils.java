@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseButton;
+import javafx.scene.text.Text;
 import node.FlowPaneNode;
 import node.PictureNode;
 import operationmenu.PaneMenu;
@@ -17,6 +18,10 @@ import node.DirectoryNode;
 import secondstage.ViewerService;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -26,6 +31,9 @@ public class PaneUtils implements InitializeUtils {
     private int count = 0;
     private double startX = 0;
     private double startY = 0;
+    private double gap = 10;
+    private double vBoxWidth = 115;
+    private double vBoxHeight = 135;
     private boolean isRenaming = false;
     private boolean isMultipleSelecting = false;
     private RenameAction renameAction;
@@ -37,9 +45,12 @@ public class PaneUtils implements InitializeUtils {
     private GraphicsContext gc;
     private PaneMenu menu = new PaneMenu(this);
     private Thread loadPictures;
+    private boolean multipleSelectLock = false;
 
     public PaneUtils(FlowPane flowPane, Canvas canvas, ScrollPane scrollPane) {
         this.flowPane = flowPane;
+        flowPane.setVgap(gap);
+        flowPane.setHgap(gap);
         this.canvas = canvas;
         this.scrollPane = scrollPane;
         initialize();
@@ -48,9 +59,9 @@ public class PaneUtils implements InitializeUtils {
     public void setRenaming(boolean renaming, RenameAction renameAction, File presentFile, File newFile) {
         isRenaming = renaming;
         this.renameAction = renameAction;
-        if(renaming==false) {
+        if (renaming == false) {
             int i = pictureFileList.indexOf(presentFile);
-            pictureFileList.set(i, newFile);
+            pictureFileList.set(i,newFile);
             ViewerService.setCurrentFiles(pictureFileList);
         }
     }
@@ -61,27 +72,30 @@ public class PaneUtils implements InitializeUtils {
         }
         flowPane.getChildren().get(selectedIndex).setStyle("-fx-background-color: #c7fdff ");
         selectedSet.add(selectedIndex);
-        if (event.getButton().equals(MouseButton.SECONDARY)) {
-
-        }
+        StaticUtils.setMultipleSelectedCount(selectedSet.size());
     }
 
     private void cancelSelected(MouseEvent event) {
-        int x = (int) (event.getX() / 115);
-        int y = (int) (event.getY() / 135);
+        int x = (int) (event.getX() / (vBoxWidth + gap));
+        int y = (int) (event.getY() / (vBoxHeight + gap));
         int index = y * 9 + x;
-        if (index > flowPane.getChildren().size()) {//判断点击位置是否在其他地方
+        if (index > flowPane.getChildren().size() ||
+                event.getY() % (vBoxHeight + gap) > vBoxHeight ||
+                event.getX() % (vBoxWidth + gap) > vBoxWidth ||
+                event.getX()>(vBoxWidth+gap)*9) {//判断点击位置是否在其他地方
             clearAllSelected();
         }
     }
 
     private void clearAllSelected() {
         isMultipleSelecting = false;
+        multipleSelectLock = false;
         for (int i : selectedSet) {
             paneNodeList.get(i).setMultipleSelected(isMultipleSelecting);
             paneNodeList.get(i).setStyle(null);
         }
         selectedSet.removeAll(selectedSet);
+        StaticUtils.setMultipleSelectedCount(selectedSet.size());
     }
 
     private void setMouseEvent() {
@@ -105,17 +119,31 @@ public class PaneUtils implements InitializeUtils {
 
     private void clickPaneEvent(MouseEvent event) {
         menu.hide();
-        if (isRenaming) {
-            renameAction.Rename(renameAction.getInputField());//如果改名时点击
-            //让他完成改名
-        } else if (event.getButton().equals(MouseButton.SECONDARY) && selectedSet.size() != 1) {
-            if (flowPane.getChildren().size() < ((int) event.getX() / 115 + (int) event.getY() / 135 * 9)) {
-                isMultipleSelecting = false;
+        System.out.println(multipleSelectLock);
+        if(!multipleSelectLock) {
+            if (isRenaming) {
+                renameAction.Rename(renameAction.getInputField());//如果改名时点击
+                //让他完成改名
+            } else if (event.getButton().equals(MouseButton.SECONDARY) && selectedSet.size() != 1) {
+                if (flowPane.getChildren().size() < ((int) (event.getX() / (vBoxWidth)) + (int) (event.getY() / (vBoxHeight)) * 9)) {
+                    isMultipleSelecting = false;
+                    multipleSelectLock = false;
+                }
+                menu.update();
+                menu.show(flowPane, event.getScreenX(), event.getScreenY());
             }
-            menu.update();
-            menu.show(flowPane, event.getScreenX(), event.getScreenY());
+            cancelSelected(event);//取消选中
+        }else {
+            multipleSelectLock = false;
+            if (event.getButton().equals(MouseButton.SECONDARY) && selectedSet.size() != 1) {
+                if (flowPane.getChildren().size() < ((int) (event.getX() / (vBoxWidth)) + (int) (event.getY() / (vBoxHeight)) * 9)) {
+                    isMultipleSelecting = false;
+                    multipleSelectLock = false;
+                }
+                menu.update();
+                menu.show(flowPane, event.getScreenX(), event.getScreenY());
+            }
         }
-        cancelSelected(event);//取消选中
     }
 
     private void multipleSelectedEvent() {
@@ -130,31 +158,50 @@ public class PaneUtils implements InitializeUtils {
                 paneNodeList.get(i).setMultipleSelected(isMultipleSelecting);
             }
         }
-        StaticUtils.multipleSelectedCount = selectedSet.size();
+        StaticUtils.setMultipleSelectedCount(selectedSet.size());
     }
 
     private void multipleChangeBackground(MouseEvent event) {
+        selectedSet.removeAll(selectedSet);
+        StaticUtils.setMultipleSelectedCount(selectedSet.size());
         for (Node node : flowPane.getChildren()) {
             node.setStyle(null);
         }
-        int startRow = (int) ((event.getY() > startY ? startY : event.getY()) / 135);
-        int startCol = (int) ((event.getX() > startX ? startX : event.getX()) / 115) > 0
-                ? (int) ((event.getX() > startX ? startX : event.getX()) / 115) : 0;
-        int endRow = ((int) ((event.getY() < startY ? startY : event.getY()) / 135) > (flowPane.getChildren().size() / 9)
-                ? (flowPane.getChildren().size() / 9) : (int) ((event.getY() < startY ? startY : event.getY()) / 135)) + 1;
-        int endCol = (int) ((event.getX() < startX ? startX : event.getX()) / 115) > 0
-                ? (int) ((event.getX() < startX ? startX : event.getX()) / 115) : 0;
+        double tmpStartX = event.getX() > startX ? startX : event.getX();
+        double tmpStartY = event.getY() > startY ? startY : event.getY();
+        double tmpEndX = event.getX() < startX ? startX : event.getX();
+        double tmpEndY = event.getY() < startY ? startY : event.getY();
+        //initialize start point and end point
 
-        endCol = endCol > 8 ? 8 : endCol;
+        int startCol = (int) (tmpStartX / (vBoxWidth + gap));
+        int startRow = (int) (tmpStartY / (vBoxHeight + gap));
+        int endCol = (int) (tmpEndX / (vBoxWidth + gap));
+        int endRow = (int) (tmpEndY / (vBoxHeight + gap));
+        //map location to flow pane column and row
+        if (Math.abs(tmpStartX % (vBoxWidth + gap)) > vBoxWidth) {
+            startCol = tmpStartX > 0 ? ++startCol : 0;
+        }
+        if (Math.abs(tmpStartY % (vBoxHeight + gap) )> vBoxHeight) {
+            startRow = tmpStartY > 0 ? ++startRow : 0;
+        }
+        //modify start point
+
+        endCol = tmpEndX > 9 * (vBoxWidth + gap) ? 8 : endCol;
+        endRow = endRow > flowPane.getChildren().size() / 9 ? flowPane.getChildren().size() / 9 + 1 : ++endRow;
+        //modify end point
+
         for (int i = startRow; i < endRow; i++) {
             for (int j = startCol; j <= endCol; j++) {
-                if (i * 9 + j >= flowPane.getChildren().size()) {
+                if ((i * 9 + j )>= flowPane.getChildren().size()) {
                     break;
                 }
-                if (paneNodeList.get(i * 9 + j).getClass().getName().equals("node.PictureNode"))
+                if (paneNodeList.get(i * 9 + j).getClass().getName().equals("node.PictureNode")) {
                     paneNodeList.get(i * 9 + j).setStyle("-fx-background-color: rgb(199,253,255)");
+                }
             }
         }
+        StaticUtils.setMultipleSelectedCount(selectedSet.size());
+        multipleSelectLock = true;
     }
 
     private void setStartingPoint(MouseEvent event) {
@@ -208,7 +255,6 @@ public class PaneUtils implements InitializeUtils {
                     pictureFileList.add(f);
                 }
             }
-        //TODO:将pictureFileList传走
         for (File f : pictureFileList) {
             PictureNode pNode = new PictureNode(f.getPath(), count++, this);
             flowPane.getChildren().add(pNode);
@@ -231,12 +277,10 @@ public class PaneUtils implements InitializeUtils {
     }
 
     public void deleteEvent(int index) {
-
+        pictureFileList.remove(new File(paneNodeList.get(index).getNodePath()));
         flowPane.getChildren().remove(index);
         for (int i = index + 1; i < paneNodeList.size(); i++) {
-            pictureFileList.remove(new File(paneNodeList.get(i).getNodePath()));
             paneNodeList.get(i).setIndex(i - 1);
-
         }
         paneNodeList.remove(index);
         selectedSet.remove(index);
@@ -252,7 +296,7 @@ public class PaneUtils implements InitializeUtils {
         selectedSet.removeAll(selectedSet);
         if (b == true) {
             for (int i = 0; i < flowPane.getChildren().size(); i++) {
-                if(flowPane.getChildren().get(i).getClass().getName().equals("node.PictureNode"))
+                if (flowPane.getChildren().get(i).getClass().getName().equals("node.PictureNode"))
                     flowPane.getChildren().get(i).setStyle("-fx-background-color: #c7fdff ");
             }
             multipleSelectedEvent();

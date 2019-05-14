@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,23 +27,30 @@ public class MainUIController implements Initializable {
     @FXML
     private Button forwardsBtn;
     @FXML
-    private Button upperBtn ;
+    private Button upperBtn;
     @FXML
     private Canvas canvas;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Text totalSize;
+    @FXML
+    private Text selectCount;
     private DirectoryTreeUtils dUtils;
     private TextFieldUtils tUtils;
     private StaticUtils sUtils;
     private PaneUtils fUtils;
     private ButtonUtils bUtils;
+    private TextUtils textUtils;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dUtils = new DirectoryTreeUtils(directoryTree);
         tUtils = new TextFieldUtils(pathField);
-        fUtils = new PaneUtils(flowPane,canvas,scrollPane);
-        bUtils = new ButtonUtils(backwardsBtn,forwardsBtn);
-        sUtils = new StaticUtils(bUtils,dUtils,fUtils,tUtils);
+        fUtils = new PaneUtils(flowPane, canvas, scrollPane);
+        bUtils = new ButtonUtils(backwardsBtn, forwardsBtn);
+        textUtils = new TextUtils(totalSize,selectCount);
+        sUtils = new StaticUtils(bUtils, dUtils, fUtils, tUtils,textUtils);
     }
 
     public void goButtonOnClicked(MouseEvent mouseEvent) {
@@ -54,13 +62,13 @@ public class MainUIController implements Initializable {
     }
 
     public void backwardsBtnOnClicked(MouseEvent event) {
-        if (sUtils.presentIndex!=0) {
+        if (sUtils.presentIndex != 0) {
             pathField.setText(sUtils.browsedPath.get(--sUtils.presentIndex));
             tUtils.update();
         }
     }
 
-    public void forwardsBtnOnclicked(MouseEvent event) {
+    public void forwardsBtnOnClicked(MouseEvent event) {
         if (sUtils.presentIndex != sUtils.maxIndexCount) {
             pathField.setText(sUtils.browsedPath.get(++sUtils.presentIndex));
             tUtils.update();

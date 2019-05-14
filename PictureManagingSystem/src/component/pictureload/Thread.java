@@ -7,9 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-
 import java.io.File;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -84,7 +82,7 @@ public class Thread implements Runnable {
                     index++;
                 } else {
                     try {
-                        java.lang.Thread.currentThread().sleep(1000);//滚动条加载时 该线程睡眠3秒
+                        java.lang.Thread.currentThread().sleep(500);//滚动条加载时 该线程睡眠0.5秒判断一次
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -99,15 +97,11 @@ public class Thread implements Runnable {
 
         //滚动条加载
         new java.lang.Thread(() -> {
-            while (directoryFlag && index <= filesList.size()) {
+            while (directoryFlag && index < filesList.size()) {
 
-                try {
-                    java.lang.Thread.currentThread().sleep(3000);//滚动条在同一位置留超过1秒 新建一个线程加载缩略图，刷新。
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 double scrollPaneLocation = Math.abs((scrollPane.getViewportBounds().getMaxY() - scrollPane.getViewportBounds().getHeight()));
-                if (this.scrollPaneLocation != scrollPaneLocation) {
+                //判断滚轮是否移动且滚动条加载线程少于4个，true才更新滚动条位置及创建新的线程
+                if (this.scrollPaneLocation != scrollPaneLocation&&sign>-3) {
                     this.scrollPaneLocation = scrollPaneLocation;
                     //创建一个关于滚动条位置的加载线程（滚动条的多次拖动会产生多个线程）
                     java.lang.Thread A = new java.lang.Thread(() -> {
@@ -145,6 +139,10 @@ public class Thread implements Runnable {
                         sign++;
                     });
                     A.start();
+                }else try {
+                    java.lang.Thread.currentThread().sleep(3000);//滚动条在同一位置留超过3秒 新建一个线程加载缩略图，刷新。
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }).start();
@@ -152,7 +150,7 @@ public class Thread implements Runnable {
         new java.lang.Thread(() -> {
             while (directoryFlag) {
                 try {
-                    java.lang.Thread.currentThread().sleep(1);//每0.1秒监测本文件夹路径与目录树点击路径一致
+                    java.lang.Thread.currentThread().sleep(100);//每0.1秒监测本文件夹路径与目录树点击路径一致
                     if (dirPath.equals(StaticUtils.presentPath))
                         ;
                     else directoryFlag = false;

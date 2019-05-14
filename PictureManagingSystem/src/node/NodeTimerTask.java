@@ -2,9 +2,9 @@ package node;
 import java.util.TimerTask;
 
 
-public class NodeTimer extends TimerTask{
+public class NodeTimerTask extends TimerTask{
     private FlowPaneNode f;
-    public NodeTimer(FlowPaneNode f) {
+    public NodeTimerTask(FlowPaneNode f) {
         this.f = f;
     }
 

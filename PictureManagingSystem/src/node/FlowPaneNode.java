@@ -57,7 +57,7 @@ public abstract class FlowPaneNode extends VBox implements Comparable{
                 if(leftClickCount == 1) {
                     StaticUtils.flowPaneSelectedEvent(index,event);
                     Timer timer = new Timer();
-                    NodeTimer task = new NodeTimer(this);
+                    NodeTimerTask task = new NodeTimerTask(this);
                     timer.schedule(task, 1000);
                 }
                 else if(leftClickCount ==2){

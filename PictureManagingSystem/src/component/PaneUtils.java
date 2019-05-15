@@ -261,7 +261,7 @@ public class PaneUtils implements InitializeUtils {
             pictureBoxList.add(pNode);
         }
         ViewerService.setCurrentFiles(pictureFileList);
-        loadPictures = new Thread(pictureFileList, pictureBoxList, scrollPane, flowPane);
+        loadPictures = new Thread(pictureFileList, pictureBoxList, scrollPane, flowPane,count);
         loadPictures.run();
     }
 

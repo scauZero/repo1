@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,9 +28,10 @@ public class Thread implements Runnable {
     private double scrollPaneLocation;
     private String dirPath;
     private boolean directoryFlag = true;
+    private int numOfDirectory;
 
     //occupyList 表示 线程占用 ，loadFlagsList  表示 是否已经加载
-    public Thread(ArrayList<File> filesList, ArrayList vBoxesList, ScrollPane scrollPane, FlowPane flow) {
+    public Thread(ArrayList<File> filesList, ArrayList vBoxesList, ScrollPane scrollPane, FlowPane flow, int numOfDirectory) {
         this.sign = 1;
         this.index = 0;
         this.dirPath = StaticUtils.presentPath;
@@ -39,19 +41,52 @@ public class Thread implements Runnable {
         this.vBoxPreWidth = 115;
         this.theNumOfRaw = (int) flow.getPrefHeight() / (flowElementHeight = (vBoxPreHeight + (int) flow.getHgap()));
         this.theNumOfvBox = (int) flow.getPrefWidth() / (vBoxPreWidth + (int) flow.getVgap());
+        this.numOfDirectory = numOfDirectory;
         if (filesList.size() == 0 || vBoxesList.size() == 0) ;
         else {
-            for(File file : filesList) {
+            for (File file : filesList) {
                 this.filesList.add(file);
             }
             this.vBoxesList = vBoxesList;
             this.occupyList = new ArrayList<Boolean>(Collections.nCopies(filesList.size(), true));
             this.loadFlagsList = new ArrayList<Boolean>(Collections.nCopies(filesList.size(), true));
+            this.numOfDirectory = numOfDirectory - filesList.size();
         }
     }
 
-     @Override
+    @Override
     public void run() {
+        this.orderLoad();//顺序加载
+        new java.lang.Thread(() -> {
+            while (directoryFlag && index < filesList.size()) {
+                double scrollPaneLocation = Math.abs((scrollPane.getViewportBounds().getMaxY() - scrollPane.getViewportBounds().getHeight()));
+                //判断滚轮是否移动且滚动条加载线程少于4个，true才更新滚动条位置及创建新的线程
+                if (this.scrollPaneLocation != scrollPaneLocation && sign > -3) {
+                    this.scrollPaneLocation = scrollPaneLocation;
+                    this.scrollLoad();//滚动条加载
+                } else try {
+                    java.lang.Thread.currentThread().sleep(3000);//滚动条在同一位置留超过3秒 新建一个线程加载缩略图，刷新。
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        //每0.1秒监测本文件夹路径与目录树点击路径一致
+        new java.lang.Thread(() -> {
+            while (directoryFlag && index < filesList.size()) {
+                try {
+                    java.lang.Thread.currentThread().sleep(100);
+                    if (dirPath.equals(StaticUtils.presentPath))
+                        ;
+                    else directoryFlag = false;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private void orderLoad() {
         //顺序加载
         new java.lang.Thread(() -> {
             while (directoryFlag && index < filesList.size()) {
@@ -64,7 +99,7 @@ public class Thread implements Runnable {
                             int[] wh = LoadPicture.getWidthHeight(file);
                             Image img = new Image("file:" + file.getAbsolutePath(), wh[0], wh[1], false, true);
                             filesList.remove(index);
-                            filesList.add(index,null);
+                            filesList.add(index, null);
                             ImageView imageView = new ImageView();
                             Platform.runLater(() -> {
                                 vBox.getChildren().remove(0);
@@ -88,76 +123,50 @@ public class Thread implements Runnable {
                     }
                 }
             }
-            if(index==filesList.size()){
+            if (index == filesList.size()) {
                 filesList.removeAll(filesList);
                 vBoxesList.removeAll(vBoxesList);
             }
 
         }).start();
+    }
 
-        //滚动条加载
-        new java.lang.Thread(() -> {
-            while (directoryFlag && index < filesList.size()) {
-
-                double scrollPaneLocation = Math.abs((scrollPane.getViewportBounds().getMaxY() - scrollPane.getViewportBounds().getHeight()));
-                //判断滚轮是否移动且滚动条加载线程少于4个，true才更新滚动条位置及创建新的线程
-                if (this.scrollPaneLocation != scrollPaneLocation&&sign>-3) {
-                    this.scrollPaneLocation = scrollPaneLocation;
-                    //创建一个关于滚动条位置的加载线程（滚动条的多次拖动会产生多个线程）
-                    java.lang.Thread A = new java.lang.Thread(() -> {
-                        sign--;
-                        //通过计算得出 目前 显示屏上需要加载的缩略图的下标
-                        int minIndex = (int) ((scrollPaneLocation / flowElementHeight)) * (theNumOfvBox) ;
-                        int maxIndex = (int) ((scrollPaneLocation / flowElementHeight)) * theNumOfvBox + (theNumOfRaw + 1) * theNumOfvBox;
-                        if (minIndex < 0 || minIndex > filesList.size())
-                            minIndex = 0;
-                        if (maxIndex < 0 || maxIndex > filesList.size())
-                            maxIndex = filesList.size();
-                        for (int scrollIndex = minIndex; scrollIndex < maxIndex; scrollIndex++) {
-                            while (directoryFlag && scrollIndex < maxIndex) {//add dir path judge
-                                if ((boolean) loadFlagsList.get(scrollIndex) && (boolean) occupyList.get(scrollIndex)) {
-                                    try {
-                                        occupyList.set(scrollIndex, false);
-                                        File file = (File) filesList.get(scrollIndex);
-                                        VBox vBox = (VBox) vBoxesList.get(scrollIndex);
-                                        int[] wh = LoadPicture.getWidthHeight(file);
-                                        Image img = new Image("file:" + file.getAbsolutePath(), wh[0], wh[1], false, true);
-                                        ImageView imageView = new ImageView();
-                                        Platform.runLater(() -> {
-                                            vBox.getChildren().remove(0);
-                                            imageView.setImage(img);
-                                            vBox.getChildren().add(0, imageView);
-                                        });
-                                        loadFlagsList.set(scrollIndex, false);
-                                    } catch (Exception e) {
-                                        e.getStackTrace();
-                                    }
-                                }
-                                scrollIndex++;
-                            }
+    private void scrollLoad() {
+        //创建一个关于滚动条位置的加载线程（滚动条的多次拖动会产生多个线程）
+        java.lang.Thread A = new java.lang.Thread(() -> {
+            sign--;
+            //通过计算得出 目前 显示屏上需要加载的缩略图的下标
+            int minIndex = (int) ((scrollPaneLocation / flowElementHeight)) * (theNumOfvBox) - this.numOfDirectory;
+            int maxIndex = (int) ((scrollPaneLocation / flowElementHeight)) * theNumOfvBox + (theNumOfRaw + 1) * theNumOfvBox - this.numOfDirectory;
+            if (minIndex < 0 || minIndex > filesList.size())
+                minIndex = 0;
+            if (maxIndex < 0 || maxIndex > filesList.size())
+                maxIndex = filesList.size();
+            for (int scrollIndex = minIndex; scrollIndex < maxIndex; scrollIndex++) {
+                while (directoryFlag && scrollIndex < maxIndex) {//add dir path judge
+                    if ((boolean) loadFlagsList.get(scrollIndex) && (boolean) occupyList.get(scrollIndex)) {
+                        try {
+                            occupyList.set(scrollIndex, false);
+                            File file = (File) filesList.get(scrollIndex);
+                            VBox vBox = (VBox) vBoxesList.get(scrollIndex);
+                            int[] wh = LoadPicture.getWidthHeight(file);
+                            Image img = new Image("file:" + file.getAbsolutePath(), wh[0], wh[1], false, true);
+                            ImageView imageView = new ImageView();
+                            Platform.runLater(() -> {
+                                vBox.getChildren().remove(0);
+                                imageView.setImage(img);
+                                vBox.getChildren().add(0, imageView);
+                            });
+                            loadFlagsList.set(scrollIndex, false);
+                        } catch (Exception e) {
+                            e.getStackTrace();
                         }
-                        sign++;
-                    });
-                    A.start();
-                }else try {
-                    java.lang.Thread.currentThread().sleep(3000);//滚动条在同一位置留超过3秒 新建一个线程加载缩略图，刷新。
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    }
+                    scrollIndex++;
                 }
             }
-        }).start();
-
-        new java.lang.Thread(() -> {
-            while (directoryFlag&&index<filesList.size()) {
-                try {
-                    java.lang.Thread.currentThread().sleep(100);//每0.1秒监测本文件夹路径与目录树点击路径一致
-                    if (dirPath.equals(StaticUtils.presentPath))
-                        ;
-                    else directoryFlag = false;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+            sign++;
+        });
+        A.start();
     }
 }

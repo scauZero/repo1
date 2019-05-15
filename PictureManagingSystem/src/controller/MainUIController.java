@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.awt.*;
@@ -40,6 +41,8 @@ public class MainUIController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
     @FXML
+    private Text numOfPictures;
+    @FXML
     private Text totalSize;
     @FXML
     private Text selectCount;
@@ -56,7 +59,7 @@ public class MainUIController implements Initializable {
         tUtils = new TextFieldUtils(pathField);
         fUtils = new PaneUtils(flowPane, canvas, scrollPane);
         bUtils = new ButtonUtils(backwardsBtn, forwardsBtn);
-        textUtils = new TextUtils(totalSize,selectCount);
+        textUtils = new TextUtils(numOfPictures,totalSize,selectCount);
         sUtils = new StaticUtils(bUtils, dUtils, fUtils, tUtils,textUtils);
     }
 
@@ -93,4 +96,5 @@ public class MainUIController implements Initializable {
     public void closeBtnExit(MouseEvent event) {
         closeBtn.setStyle("-fx-background-color: transparent");
     }
+
 }

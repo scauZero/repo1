@@ -43,7 +43,10 @@
                   <Button fx:id="upperBtn" layoutX="163.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#upperBtnOnClicked" prefWidth="66.0" text="上一级" />
                   <Button fx:id="backwardsBtn" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#backwardsBtnOnClicked" prefHeight="23.0" prefWidth="66.0" style="-fx-border-radius: 10;" text="后退" />
                   <Button fx:id="forwardsBtn" layoutX="87.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#forwardsBtnOnClicked" prefHeight="23.0" prefWidth="66.0" text="前进" />
-                  <Button fx:id="goBtn" layoutX="1274.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#goButtonOnClicked" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Go" />
+                  <Button fx:id="goBtn" layoutX="1276.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#goButtonOnClicked" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-width: 2;" text="Go">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Button>
                   <Button fx:id="closeBtn" alignment="CENTER" layoutX="1311.0" layoutY="-7.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#closeBtnOnClicked" onMouseEntered="#closeBtnEnter" onMouseExited="#closeBtnExit" prefHeight="42.0" prefWidth="66.0" style="-fx-background-color: transparent;" text="×" textFill="WHITE">
                      <font>
                         <Font size="21.0" />

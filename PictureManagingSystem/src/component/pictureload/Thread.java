@@ -148,7 +148,7 @@ public class Thread implements Runnable {
         }).start();
 
         new java.lang.Thread(() -> {
-            while (directoryFlag) {
+            while (directoryFlag&&index<filesList.size()) {
                 try {
                     java.lang.Thread.currentThread().sleep(100);//每0.1秒监测本文件夹路径与目录树点击路径一致
                     if (dirPath.equals(StaticUtils.presentPath))

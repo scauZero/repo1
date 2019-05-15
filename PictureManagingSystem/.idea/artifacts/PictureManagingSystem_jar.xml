@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PictureManagingSystem:jar">
+    <output-path>$PROJECT_DIR$/../PictureManagingSystem_jar</output-path>
+    <root id="archive" name="PictureManagingSystem.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/resource/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="PictureManagingSystem" />
+    </root>
+  </artifact>
+</component>
